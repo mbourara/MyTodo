@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String VUE          = "/WEB-INF/inscription.jsp";
@@ -22,6 +25,8 @@ public class Inscription extends HttpServlet {
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 
+
+	
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		String resultat;
 		Map<String, String> erreurs = new HashMap<String, String>();
