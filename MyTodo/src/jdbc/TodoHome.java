@@ -1,6 +1,6 @@
 package jdbc;
 
-// Generated 12 févr. 2014 12:41:52 by Hibernate Tools 4.0.0
+// Generated 12 févr. 2014 13:08:35 by Hibernate Tools 4.0.0
 
 import java.util.List;
 import javax.naming.InitialContext;
