@@ -12,25 +12,22 @@
 	    <fieldset>
                 <legend>Connexion</legend>
                 <p>Vous pouvez vous connecter via le formulaire ci-dessous.</p>
-
                 <label for="login">Login <span class="requis">*</span></label>
                 <input type="text" id="login" name="login" value="" size="20" maxlength="60" />
-                <span class="erreur">${erreurs['login']}</span>
+                <span class="erreur">${form.erreurs['login']}</span>
                 <br />
 
                 <label for="motdepasse">Mot de passe <span class="requis">*</span></label>
                 <input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
-                <span class="erreur">${erreurs['motdepasse']}</span>
+                <span class="erreur">${form.erreurs['motdepasse']}</span>
                 <br />
 
                 <input type="submit" value="Connexion" class="sansLabel" />
                 <br />
-                                
-                <p class="${empty erreurs ? 'succes' : 'erreur'}">${resultat}</p>
                 
-				<c:if test="${connexion}">						                
-    				<c:redirect url="http://localhost:8080/MyTodo/visualisation"/>
-				</c:if>
+                <span class="erreur">${form.erreurs['bd']}</span>
+                <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
+                
             </fieldset>
         </form>
 </body>

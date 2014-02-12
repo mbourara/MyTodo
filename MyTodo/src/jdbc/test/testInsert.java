@@ -15,7 +15,7 @@ public class testInsert {
 		 Session session = HibernateUtil.getSessionFactory().openSession();
 		 session.beginTransaction();
 		 
-		 Utilisateurs u = new Utilisateurs("kiki22","kiki33","kiki@gmail.com","tata","toto");
+		 Utilisateurs u = new Utilisateurs("adrien","kiki33","kiki@gmail.com","tata","toto");
 
 		 session.save(u);
 		 
