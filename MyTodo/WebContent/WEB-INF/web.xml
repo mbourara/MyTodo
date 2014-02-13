@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <servlet-name>Inscription</servlet-name>
     <servlet-class>servlets.Inscription</servlet-class>
@@ -26,11 +27,20 @@
     <url-pattern>/connexion</url-pattern>
   </servlet-mapping>
   <servlet>
-      <servlet-name>Visualisation</servlet-name>
+    <servlet-name>Visualisation</servlet-name>
     <servlet-class>servlets.Visualisation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Visualisation</servlet-name>
     <url-pattern>/visualisation</url-pattern>
+  </servlet-mapping>  
+  <servlet>
+    <servlet-name>Deconnexion</servlet-name>
+    <servlet-class>servlets.Deconnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Deconnexion</servlet-name>
+    <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
-</web-app>
+  
+  </web-app>

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jdbc.Utilisateurs;
-import model.ConnexionForm;
+import model.InscriptionForm;
 
 public class Inscription extends HttpServlet {	
 	private static final long serialVersionUID = 1L;
@@ -21,7 +21,7 @@ public class Inscription extends HttpServlet {
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		/* Préparation de l'objet formulaire */
-		ConnexionForm form = new ConnexionForm();
+		InscriptionForm form = new InscriptionForm();
 
 		/* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
 		Utilisateurs utilisateur = form.inscrireUtilisateur( request );
