@@ -146,7 +146,7 @@ public final class InscriptionForm {
 	private void setErreur(String champ, String message) {
 		erreurs.put(champ, message);
 	}
-
+// 2 foi inscreption = bug 
 	@SuppressWarnings({ "unused" })
 	private void insertBD(String login, String motDePasse, String mail,
 			String nom, String prenom) throws Exception {
