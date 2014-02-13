@@ -26,11 +26,19 @@
     <url-pattern>/connexion</url-pattern>
   </servlet-mapping>
   <servlet>
-      <servlet-name>Visualisation</servlet-name>
+    <servlet-name>Visualisation</servlet-name>
     <servlet-class>servlets.Visualisation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Visualisation</servlet-name>
     <url-pattern>/visualisation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CreateTodo</servlet-name>
+    <servlet-class>servlets.CreateTodo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateTodo</servlet-name>
+    <url-pattern>/createTodo</url-pattern>
   </servlet-mapping>
 </web-app>
