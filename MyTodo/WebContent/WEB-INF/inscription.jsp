@@ -39,8 +39,8 @@
 				name="confirmation" value="" size="20" maxlength="20" /> <span
 				class="erreur">${form.erreurs['confirmation']}</span> <br /> <label
 				for="email">Adresse Gmail <span class="requis">*</span></label> <input
-				type="text" id="email" name="email" value="" size="20"
-				maxlength="60" /> <span class="erreur">${form.erreurs['email']}</span><br />
+				type="text" id="gemail" name="gemail" size="20"
+				maxlength="60" /> <label for="gmail">@gmail.com</span></label>
 			<br /> <input type="submit" value="Inscription" class="sansLabel" />
 
 
