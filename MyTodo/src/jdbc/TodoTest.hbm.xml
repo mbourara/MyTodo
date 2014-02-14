@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 14 f??vr. 2014 12:35:27 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="jdbc.Todo" table="Todo" catalog="amourany">
+    <class name="jdbc.TodoTest" table="TodoTest" catalog="amourany">
         <id name="idTodo" type="java.lang.Integer">
             <column name="ID_Todo" />
             <generator class="identity" />
