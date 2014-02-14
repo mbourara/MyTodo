@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,13 +14,15 @@ import com.util.HibernateUtil;
 
 public final class InscriptionForm {
 	private static final String CHAMP_EMAIL = "email";
-	private static final String CHAMP_GMAIL = "email";
+	private static final String CHAMP_GMAIL = "gemail";
 
 	private static final String CHAMP_PASS = "motdepasse";
 	private static final String CHAMP_CONF = "confirmation";
 	private static final String CHAMP_NOM = "nom";
 	private static final String CHAMP_PRENOM = "prenom";
 	private static final String CHAMP_LOGIN = "login";
+	
+	private static final String EXTEND_GMAIL = "@gmail.com";
 
 	private String resultat;
 	private Map<String, String> erreurs = new HashMap<String, String>();
@@ -34,7 +37,7 @@ public final class InscriptionForm {
 
 	public Utilisateurs inscrireUtilisateur(HttpServletRequest request) {
 		String email = getValeurChamp(request, CHAMP_EMAIL);
-		String Gmail = getValeurChamp(request, CHAMP_GMAIL);
+		String gmail = getValeurChamp(request, CHAMP_GMAIL);
 
 		String motDePasse = getValeurChamp(request, CHAMP_PASS);
 		String confirmation = getValeurChamp(request, CHAMP_CONF);
@@ -51,11 +54,11 @@ public final class InscriptionForm {
 		}
 		utilisateur.setMail(email);
 		try {
-			validationEmail(Gmail);
+			//validationEmail(gmail);
 		} catch (Exception e) {
 			setErreur(CHAMP_GMAIL, e.getMessage());
 		}
-		utilisateur.setMail(Gmail);
+		utilisateur.setGmail(gmail+EXTEND_GMAIL);
 		try {
 			validationMotsDePasse(motDePasse, confirmation);
 		} catch (Exception e) {
@@ -85,7 +88,7 @@ public final class InscriptionForm {
 		if (erreurs.isEmpty()) {
 			resultat = "Succès de l'inscription.";
 			try {
-				insertBD(login, motDePasse, email, nom, prenom);
+				insertBD(login, motDePasse, email, nom, prenom, gmail);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -131,9 +134,19 @@ public final class InscriptionForm {
 	}
 
 	private void validationlogin(String login) throws Exception {
-		if (login != null && login.length() < 3) {
-			throw new Exception("Le login doit contenir au moins 3 caractères.");
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		List<Utilisateurs> ListerUtil;
+		ListerUtil= (List<Utilisateurs>)session.createQuery("select u from Utilisateurs u").list();
+		
+		for(Utilisateurs a : ListerUtil){
+			if(login.equals(a.getLogin())){
+				throw new Exception(
+						"veuillez utiliser un autre login.");
+			}
 		}
+		session.getTransaction().commit(); 
+		//session.close();
 	}
 
 	private void validationPrenom(String prenom) throws Exception {
@@ -149,26 +162,30 @@ public final class InscriptionForm {
 // 2 foi inscreption = bug 
 	@SuppressWarnings({ "unused" })
 	private void insertBD(String login, String motDePasse, String mail,
-			String nom, String prenom) throws Exception {
-
+			String nom, String prenom, String gmail) throws Exception {
+		
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-
+		
+		
 		Utilisateurs u = new Utilisateurs();
 
 		u.setLogin(login);
 		u.setMotDePasse(motDePasse);
 		u.setMail(mail);
-		u.setGmail(mail);
+		u.setGmail(gmail+EXTEND_GMAIL);
 		u.setNom(nom);
 		u.setPrenom(prenom);
-
+		
+			
 		session.save(u);
 
 		session.getTransaction().commit();
-		HibernateUtil.getSessionFactory().close();
+		//HibernateUtil.getSessionFactory().close();
 
 	}
+	
 
 	private static String getValeurChamp(HttpServletRequest request,
 			String nomChamp) {
