@@ -16,5 +16,8 @@
 		<p class="succes">Vous êtes connecté(e) avec le login :
 			${sessionScope.sessionUtilisateur.login}</p>
 	</c:if>
+	<br />
+	<a href="<c:url value="/createTodo">
+				</c:url>">Création d'un nouveau TODO.</a>
 </body>
 </html>

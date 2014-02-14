@@ -7,8 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jdbc.Todo;
+import jdbc.Utilisateurs;
 import model.CreateTodoForm;
 
 /**
@@ -20,6 +22,7 @@ public class CreateTodo extends HttpServlet {
 	
 	public static final String VUE = "/WEB-INF/createTodo.jsp";
 	public static final String VUE_VISU = "http://localhost:8080/MyTodo/visualisation";
+	public static final String ATT_SESSION_USER = "sessionUtilisateur";
 	public static final String ATT_FORM = "form";
        
     /**
@@ -45,9 +48,12 @@ public class CreateTodo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		CreateTodoForm form = new CreateTodoForm();
-		Todo todo = form.inscrireTodo(request);
+		/* Recuperation de la session depuis la requête*/
+		HttpSession session = request.getSession();
 		
+		CreateTodoForm form = new CreateTodoForm();
+		Todo todo = form.inscrireTodo(request, (Utilisateurs) session.getAttribute(ATT_SESSION_USER));
+
 		
 		if(form.getValidate())
 			response.sendRedirect(VUE_VISU);

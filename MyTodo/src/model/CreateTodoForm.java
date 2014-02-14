@@ -13,6 +13,7 @@ import org.hibernate.Session;
 import com.util.HibernateUtil;
 
 import jdbc.Todo;
+import jdbc.Utilisateurs;
 
 public class CreateTodoForm {
 	public static final String CHAMP_TITLE   = "title";
@@ -26,7 +27,7 @@ public class CreateTodoForm {
 	private int selected	= 0;
 	private boolean validate = true;
 
-	public Todo inscrireTodo( HttpServletRequest request )
+	public Todo inscrireTodo( HttpServletRequest request, Utilisateurs utilisateurs )
 	{
 		Todo todo = new Todo();
 
@@ -86,10 +87,12 @@ public class CreateTodoForm {
 		todo.setDegreImportance(degres);
 		selected = degres;
 
+		
 		if(validate)
+		{
+			todo.setFkIdUtilisateur(utilisateurs.getIdUtilisateur());
 			insertion(todo);
-
-		System.out.println(title + "  " + description + "  " + context + "  " + echeance + "  " + degres);
+		}
 
 		return todo;
 
@@ -101,9 +104,8 @@ public class CreateTodoForm {
 		session.beginTransaction();
 		session.save(todo);
 		session.getTransaction().commit();
-		HibernateUtil.getSessionFactory().close();
-		
-		System.out.println("INSIIIIIIIDE");
+		//HibernateUtil.getSessionFactory().close();
+		//session.close();
 	}
 
 
