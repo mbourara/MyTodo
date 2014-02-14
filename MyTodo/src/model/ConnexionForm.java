@@ -55,7 +55,7 @@ public final class ConnexionForm {
 		if ( erreurs.isEmpty() ) {
 			//Verification dans la BD
 			try {
-				validConnexion = validationBD(login, motDePasse);
+				validConnexion = validationBD(login, motDePasse, utilisateur);
 			} catch (Exception e) {
 				setErreur( CHAMP_BD, e.getMessage());
 			}
@@ -70,7 +70,6 @@ public final class ConnexionForm {
 		} else {
 			resultat = "Échec de la connexion.";
 		}
-
 		return utilisateur;
 	}
 
@@ -87,7 +86,7 @@ public final class ConnexionForm {
 	}
 
 	@SuppressWarnings("unchecked")
-	private boolean validationBD( String login , String mdp) throws Exception {
+	private boolean validationBD( String login , String mdp, Utilisateurs utilisateur) throws Exception {
 		Boolean loginTrouve = false;
 		Utilisateurs user = null;
 		Boolean valide = false;
@@ -109,6 +108,14 @@ public final class ConnexionForm {
 			//Verification du mdp
 			if(mdp.equals(user.getMotDePasse())){
 				valide = true;
+				utilisateur.setGmail(user.getGmail());
+				utilisateur.setIdUtilisateur(user.getIdUtilisateur());
+				utilisateur.setLogin(user.getLogin());
+				utilisateur.setMail(user.getMail());
+				utilisateur.setMotDePasse(user.getMotDePasse());
+				utilisateur.setNom(user.getNom());
+				utilisateur.setPrenom(user.getPrenom());
+				
 			}
 		}	
 
