@@ -353,8 +353,7 @@ selected
 				// And here is the end.
 			// ]]> -->
 			</script>
-			</f
-				ieldset>
+			</fieldset>
 	</form>
 </body>
 </html>
