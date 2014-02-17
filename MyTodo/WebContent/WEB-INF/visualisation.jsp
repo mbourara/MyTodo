@@ -19,5 +19,7 @@
 	<br />
 	<a href="<c:url value="/createTodo">
 				</c:url>">Création d'un nouveau TODO.</a>
+	<a href="<c:url value="/synchronisation">
+				</c:url>">Synchronisation avec google Calendar.</a>
 </body>
 </html>

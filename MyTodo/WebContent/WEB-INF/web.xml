@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <servlet-name>Inscription</servlet-name>
     <servlet-class>servlets.Inscription</servlet-class>
@@ -33,7 +32,7 @@
   <servlet-mapping>
     <servlet-name>Visualisation</servlet-name>
     <url-pattern>/visualisation</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
   <servlet>
     <servlet-name>Deconnexion</servlet-name>
     <servlet-class>servlets.Deconnexion</servlet-class>
@@ -49,5 +48,13 @@
   <servlet-mapping>
     <servlet-name>CreateTodo</servlet-name>
     <url-pattern>/createTodo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Synchronisation</servlet-name>
+    <servlet-class>servlets.Synchronisation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Synchronisation</servlet-name>
+    <url-pattern>/synchronisation</url-pattern>
   </servlet-mapping>
 </web-app>
