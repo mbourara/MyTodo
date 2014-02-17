@@ -12,18 +12,11 @@
 	
 	      <ul class="nav navbar-nav navbar-right">
 	       	 <li>
-				<a href="inscription" class="btn btn-primary" role="button">Inscription</a>
-	       	</li>
-	        <li>
-				<a href="connexion" class="btn btn-default" role="button">Connexion</a>
+				<a href="Deconnexion" class="btn btn-default" role="button">Déconnection</a>
 	       	</li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-	
-	<div class="col-md-3">
-	toto
-	</div>
-	<div class="col-md-9">
+
 
