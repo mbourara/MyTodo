@@ -33,5 +33,51 @@
 	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/commons-logging-1.1.3-javadoc.jar"/>
 	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/commons-logging-1.1.3.jar"/>
 	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/antlr-2.7.7.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-youtube-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-youtube-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-webmastertools-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-webmastertools-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-spreadsheet-meta-3.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-spreadsheet-3.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-sites-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-sites-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-sidewiki-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-sidewiki-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-projecthosting-meta-2.1.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-projecthosting-2.1.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-photos-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-photos-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-media-1.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-maps-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-maps-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-health-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-health-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-gtt-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-gtt-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-finance-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-finance-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-docs-meta-3.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-docs-3.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-core-1.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-contacts-meta-3.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-contacts-3.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-codesearch-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-codesearch-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-client-meta-1.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-client-1.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-calendar-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-calendar-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-books-meta-1.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-books-1.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-blogger-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-blogger-2.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-base-1.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-appsforyourdomain-meta-1.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-appsforyourdomain-1.0.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-analytics-meta-2.1.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/gdata-analytics-2.1.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/jsr305.jar"/>
+	<classpathentry kind="lib" path="/autofs/netapp/travail/jkarpins/PED/Librairy/GCalendar/guava-11.0.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

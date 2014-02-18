@@ -14,7 +14,7 @@ import com.util.HibernateUtil;
 
 public final class InscriptionForm {
 	private static final String CHAMP_EMAIL = "email";
-	private static final String CHAMP_GMAIL = "gemail";
+	private static final String CHAMP_GMAIL = "gmail";
 
 	private static final String CHAMP_PASS = "motdepasse";
 	private static final String CHAMP_CONF = "confirmation";
@@ -105,7 +105,8 @@ public final class InscriptionForm {
 			if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
 				throw new Exception("Merci de saisir une adresse mail valide.");
 			}
-		} else {
+		}
+		else {
 			throw new Exception("Merci de saisir une adresse mail.");
 		}
 	}
@@ -116,24 +117,36 @@ public final class InscriptionForm {
 			if (!motDePasse.equals(confirmation)) {
 				throw new Exception(
 						"Les mots de passe entrés sont différents, merci de les saisir à nouveau.");
-			} else if (motDePasse.length() < 3) {
+			}
+			else if (motDePasse.length() < 3) {
 				throw new Exception(
 						"Les mots de passe doivent contenir au moins 3 caractères.");
 			}
-		} else {
+		}
+		else {
 			throw new Exception(
 					"Merci de saisir et confirmer votre mot de passe.");
 		}
 	}
 
 	private void validationNom(String nom) throws Exception {
-		if (nom != null && nom.length() < 3) {
-			throw new Exception(
+		if (nom != null) {
+			if(nom.length() < 3) {
+				throw new Exception(
 					"Le nom d'utilisateur doit contenir au moins 3 caractères.");
+			}
 		}
+		else
+			throw new Exception(
+					"Le nom d'utilisateur doit être rempli.");
+		
 	}
 
 	private void validationlogin(String login) throws Exception {
+		if(login == null) {
+			throw new Exception("Le login doit être rempli.");
+		}
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		List<Utilisateurs> ListerUtil;
@@ -142,7 +155,7 @@ public final class InscriptionForm {
 		for(Utilisateurs a : ListerUtil){
 			if(login.equals(a.getLogin())){
 				throw new Exception(
-						"veuillez utiliser un autre login.");
+						"Veuillez utiliser un autre login.");
 			}
 		}
 		session.getTransaction().commit(); 
@@ -150,10 +163,15 @@ public final class InscriptionForm {
 	}
 
 	private void validationPrenom(String prenom) throws Exception {
-		if (prenom != null && prenom.length() < 3) {
-			throw new Exception(
-					"Le prenom d'utilisateur doit contenir au moins 3 caractères.");
+		if (prenom != null){
+			if(prenom.length() < 3) {
+				throw new Exception(
+					"Le prenom de l'utilisateur doit contenir au moins 3 caractères.");
+			}
 		}
+		else
+			throw new Exception(
+					"Le prénom de l'utilisateur doit être rempli.");
 	}
 
 	private void setErreur(String champ, String message) {
