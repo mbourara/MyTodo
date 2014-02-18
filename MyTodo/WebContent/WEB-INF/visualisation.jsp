@@ -14,7 +14,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-
+ 
 	
 	<div class="col-md-3">
 		<%-- Vérification de la présence d'un objet utilisateur en session --%>
