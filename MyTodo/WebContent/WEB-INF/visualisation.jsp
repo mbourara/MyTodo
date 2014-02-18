@@ -5,19 +5,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style>
+<%@include file="lib/css/css/bootstrap.min.css" %> 
+</style>
+
 <title>MyTodo</title>
 </head>
 <body>
-	Bienvenue dans la visualisation de vos Todo !!
+<%@ include file="header.jsp" %>
 
-	<%-- Vérification de la présence d'un objet utilisateur en session --%>
+	
+	<div class="col-md-3">
+		<%-- Vérification de la présence d'un objet utilisateur en session --%>
 	<c:if test="${!empty sessionScope.sessionUtilisateur}">
 		<%-- Si l'utilisateur existe en session, alors on affiche son login. --%>
 		<p class="succes">Vous êtes connecté(e) avec le login :
 			${sessionScope.sessionUtilisateur.login}</p>
 	</c:if>
+		<a href="createTodo" class="btn btn-primary">Créer un TODO</a>
+	</div>
+	<div class="col-md-9">
+	Bienvenue dans la visualisation de vos Todo !!
+
+
 	<br />
-	<a href="<c:url value="/createTodo">
-				</c:url>">Création d'un nouveau TODO.</a>
+				
+<%@ include file="footer.jsp" %>
 </body>
 </html>
