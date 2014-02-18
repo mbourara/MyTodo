@@ -115,7 +115,7 @@ public final class ConnexionForm {
 				utilisateur.setMotDePasse(user.getMotDePasse());
 				utilisateur.setNom(user.getNom());
 				utilisateur.setPrenom(user.getPrenom());
-				
+				utilisateur.setGmotDePasse(user.getGmotDePasse());
 			}
 		}	
 

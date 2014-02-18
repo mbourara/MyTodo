@@ -37,8 +37,8 @@ public class CalendarTest {
 		CalendarEventEntry myEvent = new CalendarEventEntry();
 		
 		//Set the title and description
-		myEvent.setTitle(new PlainTextConstruct("Pi Day Party"));
-		myEvent.setContent(new PlainTextConstruct("I am throwing a Pi Day Party!"));
+		myEvent.setTitle(new PlainTextConstruct("YOLOOOOOOOOOOOO Party"));
+		myEvent.setContent(new PlainTextConstruct("I am throwing a YOOOOOOLO!"));
 
 		//Create DateTime events and create a When object to hold them, then add
 		//the When event to the event

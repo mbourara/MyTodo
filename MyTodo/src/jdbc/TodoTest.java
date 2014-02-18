@@ -1,6 +1,6 @@
 package jdbc;
 
-// Generated 14 févr. 2014 12:35:26 by Hibernate Tools 4.0.0
+// Generated 18 févr. 2014 10:10:30 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 
@@ -14,19 +14,22 @@ public class TodoTest implements java.io.Serializable {
 	private String description;
 	private int degreImportance;
 	private String contexte;
-	private Date echeance;
+	private Date echeanceBegin;
+	private Date echeanceEnd;
 	private int fkIdUtilisateur;
 
 	public TodoTest() {
 	}
 
 	public TodoTest(String titre, String description, int degreImportance,
-			String contexte, Date echeance, int fkIdUtilisateur) {
+			String contexte, Date echeanceBegin, Date echeanceEnd,
+			int fkIdUtilisateur) {
 		this.titre = titre;
 		this.description = description;
 		this.degreImportance = degreImportance;
 		this.contexte = contexte;
-		this.echeance = echeance;
+		this.echeanceBegin = echeanceBegin;
+		this.echeanceEnd = echeanceEnd;
 		this.fkIdUtilisateur = fkIdUtilisateur;
 	}
 
@@ -70,12 +73,20 @@ public class TodoTest implements java.io.Serializable {
 		this.contexte = contexte;
 	}
 
-	public Date getEcheance() {
-		return this.echeance;
+	public Date getEcheanceBegin() {
+		return this.echeanceBegin;
 	}
 
-	public void setEcheance(Date echeance) {
-		this.echeance = echeance;
+	public void setEcheanceBegin(Date echeanceBegin) {
+		this.echeanceBegin = echeanceBegin;
+	}
+
+	public Date getEcheanceEnd() {
+		return this.echeanceEnd;
+	}
+
+	public void setEcheanceEnd(Date echeanceEnd) {
+		this.echeanceEnd = echeanceEnd;
 	}
 
 	public int getFkIdUtilisateur() {

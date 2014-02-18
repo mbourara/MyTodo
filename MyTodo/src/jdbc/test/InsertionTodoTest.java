@@ -23,7 +23,7 @@ public class InsertionTodoTest {
 		session.beginTransaction();
 
 		// Insertion dans la base de données.
-		TodoTest t = new TodoTest("titre", "description", 2, "contexte", new Date(), 1);
+		TodoTest t = new TodoTest("titre", "description", 2, "contexte", new Date(),new Date(), 1);
 		session.save(t);
 		session.getTransaction().commit();
 		// Récupération des informations.

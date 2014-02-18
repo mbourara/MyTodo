@@ -18,8 +18,11 @@
 	</c:if>
 	<br />
 	<a href="<c:url value="/createTodo">
-				</c:url>">Création d'un nouveau TODO.</a>
+				</c:url>">Création d'un
+		nouveau TODO.</a>
+	</br>
 	<a href="<c:url value="/synchronisation">
-				</c:url>">Synchronisation avec google Calendar.</a>
+				</c:url>">Synchronisation
+		avec google Calendar.</a>
 </body>
 </html>

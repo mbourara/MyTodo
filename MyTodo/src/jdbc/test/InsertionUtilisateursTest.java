@@ -19,7 +19,7 @@ public class InsertionUtilisateursTest {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		// Insertion dans la base de données.
-		UtilisateursTest u = new UtilisateursTest("user","usermdp","user@adresse.com","userfirstname","userlastname","user@gmail.com");
+		UtilisateursTest u = new UtilisateursTest("user","usermdp","user@adresse.com","userfirstname","userlastname","user@gmail.com","gmdp");
 		session.save(u);
 		session.getTransaction().commit();
 		// Récupération des informations.
