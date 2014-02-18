@@ -68,6 +68,7 @@ public class SynchronisationForm {
 			eventTimes.setEndTime(endTime);
 			myEvent.addTime(eventTimes);
 
+			//if()
 			myService.insert(postURL, myEvent);
 		}
 
