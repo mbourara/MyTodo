@@ -32,6 +32,7 @@ public final class ConnexionForm {
 	public Map<String, String> getErreurs() {
 		return erreurs;
 	}
+	
 	public Utilisateurs connecterUtilisateur( HttpServletRequest request ) {
 		String motDePasse = getValeurChamp( request, CHAMP_PASS );
 		String login = getValeurChamp( request, CHAMP_LOGIN );
