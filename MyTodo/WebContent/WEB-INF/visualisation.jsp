@@ -27,7 +27,7 @@
 	
 	      <ul class="nav navbar-nav navbar-right">
 	       	 <li>
-				<a href="Deconnexion" class="btn btn-default" role="button">Déconnection</a>
+				<a href="Deconnexion" class="btn btn-default" role="button">Déconnexion</a>
 	       	</li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
@@ -47,12 +47,49 @@
 	</div>
 	<div class="col-md-8 col-md-offset-1 well">
 	Bienvenue dans la visualisation de vos Todo !!
+	<br />
+		<c:if test="${!empty sessionScope.sessionUtilisateur}">
+		
+		<!-- Affichage des TODOs -->
+		Nombre de TODO : ${visu.nbTodo}
+		<div class="panel-group" id="accordion">
 
+			<!-- Pour chaque Todo ... -->
+			<c:forEach items="${todo}" var="myTodo">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion"
+								href="#${myTodo.idTodo}"> Titre : ${myTodo.titre} </a>
+						</h4>
+					</div>
+					<div id="${myTodo.idTodo}" class="panel-collapse collapse">
+						<div class="panel-body">
+							Contexte : ${myTodo.contexte} <br /> Description :
+							${myTodo.description} <br /> Priorité :
+							${myTodo.degreImportance} <br /> Date début :
+							${myTodo.echeanceBegin} --- Date fin : ${myTodo.echeanceEnd}
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+
+		</div>
 
 	<br />
 	
 </div>
 </div>
+		</c:if>
+		<c:if test="${empty sessionScope.sessionUtilisateur}">
+			==================== /!\ ======================<br />
+			Veuillez vous connecter pour visualiser vos TODOs.<br />
+			==================== /!\ ======================<br />
+		</c:if>
 
 </body>
+<script type="text/javascript"><%@include file="lib/css/js/jquery.js" %></script>
+<script type="text/javascript"><%@include file="lib/css/js/bootstrap.min.js" %></script>
+<script type="text/javascript"><%@include file="lib/css/js/bootstrap.js" %></script>
 </html>
