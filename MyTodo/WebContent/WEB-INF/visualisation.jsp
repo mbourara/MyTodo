@@ -23,17 +23,14 @@
 		<p class="succes">Vous êtes connecté(e) avec le login :
 			${sessionScope.sessionUtilisateur.login}</p>
 	</c:if>
-		<a href="createTodo" class="btn btn-primary">Créer un TODO</a>
+		<div class="col-md-12"><a href="createTodo" class="btn btn-primary">Créer un TODO</a></div>
+		<div class="col-md-12"><a href="synchronisation" class="btn btn-primary">Synchronisation Google Calendar</a></div>
 	</div>
 	<div class="col-md-9">
 	Bienvenue dans la visualisation de vos Todo !!
 
 
 	<br />
-
-	<a href="<c:url value="/synchronisation">
-				</c:url>">Synchronisation
-		avec google Calendar.</a>
 	
 <%@ include file="footer.jsp" %>
 

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+	
 <style>
 <%@include file="lib/css/css/bootstrap.min.css" %> 
 </style>
@@ -48,6 +48,6 @@
 				<div class="${empty form.erreurs ? 'succes' : 'erreur'} col-md-12">${form.resultat}</div>
 			</div>
 		</div>
-	</div>
+	</div>	
 </body>
 </html>
