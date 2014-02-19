@@ -38,6 +38,16 @@ public class Synchronisation extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		
+		SynchronisationForm form = new SynchronisationForm();
+		try {
+			form.generateCalendar((Utilisateurs) session.getAttribute(ATT_SESSION_USER));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute( ATT_FORM, form );
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 
@@ -52,7 +62,7 @@ public class Synchronisation extends HttpServlet {
 		
 		SynchronisationForm form = new SynchronisationForm();
 		form.synchro(request, (Utilisateurs) session.getAttribute(ATT_SESSION_USER));
-
+		
 		
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}

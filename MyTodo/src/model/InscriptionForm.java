@@ -192,7 +192,8 @@ public final class InscriptionForm {
 		u.setLogin(login);
 		u.setMotDePasse(motDePasse);
 		u.setMail(mail);
-		u.setGmail(gmail+EXTEND_GMAIL);
+		if(gmail != null)
+			u.setGmail(gmail+EXTEND_GMAIL);
 		u.setNom(nom);
 		u.setPrenom(prenom);
 		

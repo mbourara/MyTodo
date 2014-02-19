@@ -58,7 +58,7 @@
 						<div class="form-group">
 							<div class="col-md-6">
 								<input id="dateb" onclick="ds_sh(this);" name="dateb" readonly="readonly" style="cursor: text" class="form-control" 
-								value="${form.contains['dateb']}" />
+								 />
 							</div>
 									
 							<div class="col-md-3">
@@ -84,7 +84,7 @@
 						<div class="form-group">
 							<div class="col-md-6">
 								<input id="datee" onclick="ds_sh(this);" name="datee" readonly="readonly" style="cursor: text" class="form-control"
-								value="${form.contains['datee']}" />${form.erreurs['datee']}
+								 />${form.erreurs['datee']}
 							</div>
 							
 							<div class="col-md-3">
