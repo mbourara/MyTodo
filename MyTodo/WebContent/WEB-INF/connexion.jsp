@@ -14,16 +14,32 @@
 
 </head>
 <body>
+
 	<div class="container">
+		
+	<nav class="navbar navbar-default" role="navigation">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	    	<a href="visualisation" class="navbar-brand">My Todo</a>
+	    </div>
+	
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse navbar-right">
+
+			<a href="connexion" class="btn btn-default navbar-btn" role="button">Connexion</a>
+			<a href="inscription" class="btn btn-primary navbar-btn" role="button">Inscription</a>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
 		
 		<h2>Connexion</h2>
 		<hr />
 		<div style="text-align:justify;">
 			<p>Vous pouvez vous connecter via le formulaire ci-dessous.</p>
-			<p>Vous n'avez pas encore de compte enregistré ? <a href="<c:url value="/inscription"> </c:url>">Cliquez sur ce lien pour en créer un !</a></p>
 		</div>
 		<hr />
-		<div class="col-md-offset-4 col-md-4">
+		<div class="col-md-offset-4 col-md-4 well well-lg">
 			<div class="row">
 				<form role="form" method="post" action="Connexion">
 					<div class="form-group col-md-12 ${form.erreurs['login'] != null ? ' has-error' : ''} ">
@@ -39,7 +55,7 @@
 					
 					<div class="col-md-12">
 						<div class="pull-right">
-							<button type="submit" class="btn btn-primary"> Connexion</button>
+							<button type="submit" class="btn btn-primary">Connexion</button>
 						</div>
 					</div>
 				</form>
