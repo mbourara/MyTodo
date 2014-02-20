@@ -51,62 +51,19 @@
 					</div>
 					<div class="${form.erreurs['contexte'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['contexte']}</div>
 					
-					<label for="date">Echéance : </label>
-					
 					<div class="form-group col-md-12">
-						<label for="dateb">Date de début :</label>
+						<label for="dateb">Echeance :</label>
 						
 						<div class="form-group">
 							<div class="col-md-6">
 								<input id="dateb" onclick="ds_sh(this);" name="dateb" readonly="readonly" style="cursor: text" class="form-control" 
-								value="${todo.echeanceBegin}" />
+								value="${todo.echeance}" />
 							</div>
 									
-							<div class="col-md-3">
-								<select class="form-control" name="hourb">
-									<c:forEach var="i" begin="0" end="24" step="1">
-										<option><c:if test="${i < 10}" var="maVariable" scope="session">0</c:if>${i}</option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="col-md-3">
-								<select class="form-control" name="minb">
-									<c:forEach var="i" begin="0" end="59" step="1">
-										<option><c:if test="${i < 10}" var="maVariable" scope="session">0</c:if>${i}</option>
-									</c:forEach>
-								</select>
-							</div>
 						</div>
 					</div>
 					<div class="${form.erreurs['dateb'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['dateb']}</div>
-					
-					<div class="form-group col-md-12">
-						<label for="datee">Date de fin : </label>
-						<div class="form-group">
-							<div class="col-md-6">
-								<input id="datee" onclick="ds_sh(this);" name="datee" readonly="readonly" style="cursor: text" class="form-control"
-								value="${todo.echeanceEnd}" />${form.erreurs['datee']}
-							</div>
-							
-							<div class="col-md-3">
-								<select class="form-control" name="houre" size="1">
-									<c:forEach var="i" begin="0" end="24" step="1">
-										<option><c:if test="${i < 10}" var="maVariable" scope="session">0</c:if>${i}</option>
-									</c:forEach>
-								</select>
-							</div>
-							
-							<div class="col-md-3">
-								<select class="form-control" name="mine" size="1">
-									<c:forEach var="i" begin="0" end="59" step="1">
-										<option><c:if test="${i < 10}" var="maVariable" scope="session">0</c:if>${i}</option>
-									</c:forEach>
-								</select>
-							</div>
-							
-						</div>
-					</div>
-					<div class="${form.erreurs['datee'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['datee']}</div>
+						
 					<div class="form-inline">
 						<label for="degres">Degrès d'importance : </label>
 						<select class="form-control" name="degres" size="1">
