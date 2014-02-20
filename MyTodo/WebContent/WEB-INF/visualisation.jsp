@@ -60,6 +60,10 @@
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#${myTodo.idTodo}"> Titre : ${myTodo.titre} </a>
+								<form method="post" action="modifyTodo">
+									<input name="IDTodo" type="hidden" value="${myTodo.idTodo}">
+									<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"> </span></button>
+								</form>
 						</h4>
 					</div>
 					<div id="${myTodo.idTodo}" class="panel-collapse collapse">
