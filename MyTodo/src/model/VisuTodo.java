@@ -54,4 +54,20 @@ public class VisuTodo {
 
 		return listTodo;
 	}
+	
+	public Todo getTodoByID(HttpServletRequest request, int idTodo){ 
+		
+		//Recuperation dans la BD
+		Session session = HibernateUtil.getSessionFactory().openSession(); 
+		session.beginTransaction(); 
+		
+		Todo todo;
+		todo = (Todo)session.createQuery("select t from Todo t where ID_TODO = "+idTodo).uniqueResult();
+		
+		//Fermeture de session
+		session.getTransaction().commit(); 
+		session.close();
+		
+		return todo;
+	}
 }

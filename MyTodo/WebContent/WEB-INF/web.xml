@@ -57,4 +57,12 @@
     <servlet-name>Synchronisation</servlet-name>
     <url-pattern>/synchronisation</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ModifyTodo</servlet-name>
+    <servlet-class>servlets.ModifyTodo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyTodo</servlet-name>
+    <url-pattern>/modifyTodo</url-pattern>
+  </servlet-mapping>
 </web-app>
