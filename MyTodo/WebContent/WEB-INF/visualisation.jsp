@@ -18,18 +18,13 @@
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	     	 <h1>My Todo</h1>
+	    	<a href="visualisation" class="navbar-brand">My Todo</a>
 	    </div>
 	
 	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	 
-	
-	      <ul class="nav navbar-nav navbar-right">
-	       	 <li>
-				<a href="Deconnexion" class="btn btn-default" role="button">Déconnexion</a>
-	       	</li>
-	      </ul>
+	    <div class="collapse navbar-collapse navbar-right">
+
+			<a href="deconnexion" class="btn btn-default navbar-btn" role="button">Déconnexion</a>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
@@ -46,12 +41,15 @@
 		<div class="col-md-12"><a href="synchronisation" class="btn btn-primary">Synchronisation Google Calendar</a></div>
 	</div>
 	<div class="col-md-8 col-md-offset-1 well">
+	<div class="col-md-12">
 	Bienvenue dans la visualisation de vos Todo !!
-	<br />
+	</div>
 		<c:if test="${!empty sessionScope.sessionUtilisateur}">
 		
 		<!-- Affichage des TODOs -->
-		Nombre de TODO : ${visu.nbTodo}
+		<div class="col-md-12">Nombre de TODO : ${visu.nbTodo}</div>
+		
+		<div class="col-md-12">
 		<div class="panel-group" id="accordion">
 
 			<!-- Pour chaque Todo ... -->
@@ -62,6 +60,10 @@
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
 								href="#${myTodo.idTodo}"> Titre : ${myTodo.titre} </a>
+								<form method="post" action="modifyTodo">
+									<input name="IDTodo" type="hidden" value="${myTodo.idTodo}">
+									<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"> </span></button>
+								</form>
 						</h4>
 					</div>
 					<div id="${myTodo.idTodo}" class="panel-collapse collapse">
@@ -76,12 +78,13 @@
 			</c:forEach>
 
 		</div>
+		</div>
 
-	<br />
 	
 </div>
 </div>
 		</c:if>
+		
 		<c:if test="${empty sessionScope.sessionUtilisateur}">
 			==================== /!\ ======================<br />
 			Veuillez vous connecter pour visualiser vos TODOs.<br />
