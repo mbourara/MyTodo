@@ -91,7 +91,7 @@ public class ModifyTodoForm {
 				echeanceBegin += minBegin + ":00";
 				date = dt.parse(echeanceBegin);
 				
-				todo.setEcheanceBegin(date);
+				//todo.setEcheanceBegin(date);
 			}
 			else
 				validate = false;
@@ -108,7 +108,7 @@ public class ModifyTodoForm {
 				echeanceEnd += hourEnd + ":";
 				echeanceEnd += minEnd + ":00";
 				date = dt.parse(echeanceEnd);
-				todo.setEcheanceEnd(date);
+				//todo.setEcheanceEnd(date);
 			}
 			else
 				validate = false;
