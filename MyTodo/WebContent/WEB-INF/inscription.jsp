@@ -16,6 +16,22 @@
 </head>
 <body>
 	<div class="container">
+	
+		<nav class="navbar navbar-default" role="navigation">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	    	<a href="visualisation" class="navbar-brand">My Todo</a>
+	    </div>
+	
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse navbar-right">
+
+			<a href="connexion" class="btn btn-default navbar-btn" role="button">Connexion</a>
+			<a href="inscription" class="btn btn-primary navbar-btn" role="button">Inscription</a>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
 		<h2>Formulaire d'inscription</h2>
 		<hr />
 		<div style="text-align:justify;">
