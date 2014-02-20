@@ -43,6 +43,29 @@ public class SynchronisationForm {
 		}
 	}
 
+	public CalendarEventEntry editEvent(Todo t)
+	{
+		CalendarEventEntry myEvent = new CalendarEventEntry();
+		
+		myEvent.setTitle(new PlainTextConstruct(t.getTitre()));
+		myEvent.setContent(new PlainTextConstruct(t.getDescription()));
+
+		DateTime startTime = new DateTime(t.getEcheance());
+		DateTime endTime = new DateTime(t.getEcheance());
+
+		When eventTimes = new When();
+		eventTimes.setStartTime(startTime);
+		eventTimes.setEndTime(endTime);
+		myEvent.addTime(eventTimes);
+
+		Where where = new Where();
+		where.setValueString(t.getContexte());
+
+		myEvent.addLocation(where);
+		
+		return myEvent;
+	}
+	
 	@SuppressWarnings("unchecked")
 	private void insertionCalendar(Utilisateurs utilisateur, int idCalendar) throws Exception {
 
@@ -67,25 +90,10 @@ public class SynchronisationForm {
 					"select s from Synchro s where s.fkIdTodo ='"+ t.getIdTodo() +"'"
 							+ "AND s.idCalendar = '" + idCalendar + "' ").list();
 
-			CalendarEventEntry myEvent = new CalendarEventEntry();
-
-			myEvent.setTitle(new PlainTextConstruct(t.getTitre()));
-			myEvent.setContent(new PlainTextConstruct(t.getDescription()));
-
-			DateTime startTime = new DateTime(t.getEcheanceBegin());
-			DateTime endTime = new DateTime(t.getEcheanceEnd());
-
-			When eventTimes = new When();
-			eventTimes.setStartTime(startTime);
-			eventTimes.setEndTime(endTime);
-			myEvent.addTime(eventTimes);
-			
-			Where where = new Where();
-            where.setValueString(t.getContexte());
-
-            myEvent.addLocation(where);
+			CalendarEventEntry myEvent = editEvent(t);	
 
 			boolean exist = false;
+			CalendarEventEntry updateEntry = null;
 			for(int i=0; i<myFeed.getEntries().size(); i++)
 			{
 				for(Synchro s : ListerSynchro)
@@ -93,7 +101,10 @@ public class SynchronisationForm {
 					CalendarEventEntry matchEntry = (CalendarEventEntry)
 							myFeed.getEntries().get(i);
 					if(matchEntry.getId().equals(s.getFkIdEvent()))
+					{
 						exist = true;
+						updateEntry = matchEntry;
+					}
 				}
 			}		
 			if(!exist)
@@ -121,6 +132,11 @@ public class SynchronisationForm {
 					SQLQuery sqlQuery = session.createSQLQuery(query);
 					sqlQuery.executeUpdate();
 				}
+			}
+			else
+			{
+				// Synchronisation des modification et suppression des TODO.
+
 			}
 		}
 

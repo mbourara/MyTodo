@@ -1,5 +1,6 @@
 package model;
 
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -107,6 +108,7 @@ public final class ConnexionForm {
 		}
 		if(loginTrouve){
 			//Verification du mdp
+
 			if(mdp.equals(user.getMotDePasse())){
 				valide = true;
 				utilisateur.setGmail(user.getGmail());

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20 f??vr. 2014 12:59:52 by Hibernate Tools 4.0.0 -->
+<!-- Generated 20 f??vr. 2014 15:04:44 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
     <class name="jdbc.Todo" table="Todo" catalog="amourany">
         <id name="idTodo" type="java.lang.Integer">
@@ -20,14 +20,14 @@
         <property name="contexte" type="string">
             <column name="Contexte" not-null="true" />
         </property>
-        <property name="echeanceBegin" type="timestamp">
-            <column name="EcheanceBegin" length="19" not-null="true" />
-        </property>
-        <property name="echeanceEnd" type="timestamp">
-            <column name="EcheanceEnd" length="19" not-null="true" />
+        <property name="echeance" type="timestamp">
+            <column name="Echeance" length="19" not-null="true" />
         </property>
         <property name="fkIdUtilisateur" type="int">
             <column name="FK_ID_Utilisateur" not-null="true" />
+        </property>
+        <property name="state" type="int">
+            <column name="State" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

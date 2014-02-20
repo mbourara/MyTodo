@@ -68,8 +68,8 @@
 						<div class="panel-body">
 							Contexte : ${myTodo.contexte} <br /> Description :
 							${myTodo.description} <br /> Priorité :
-							${myTodo.degreImportance} <br /> Date début :
-							${myTodo.echeanceBegin} --- Date fin : ${myTodo.echeanceEnd}
+							${myTodo.degreImportance} <br /> Echéance :
+							${myTodo.echeance}
 						</div>
 					</div>
 				</div>

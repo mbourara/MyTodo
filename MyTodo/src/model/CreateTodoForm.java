@@ -19,14 +19,9 @@ public class CreateTodoForm {
 	public static final String CHAMP_TITLE   = "title";
 	public static final String CHAMP_DESC   = "description";
 	public static final String CHAMP_CONTEXT   = "contexte";
-	public static final String CHAMP_ECHEANCEBEGIN   = "dateb";
-	public static final String CHAMP_HOURBEGIN   = "hourb";
-	public static final String CHAMP_MINBEGIN   = "minb";
-	public static final String CHAMP_ECHEANCEEND   = "datee";
-	public static final String CHAMP_HOUREND	= "houre";
-	public static final String CHAMP_MINEND   = "mine";
+	public static final String CHAMP_ECHEANCE   = "echeance";
 	public static final String CHAMP_DEGRES   = "degres";
-	public static final SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+	public static final SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
 	
 	private Map<String, String> erreurs      = new HashMap<String, String>();
 	private Map<String, String> contains      = new HashMap<String, String>();
@@ -40,12 +35,7 @@ public class CreateTodoForm {
 		String title = getValeurChamp( request, CHAMP_TITLE );
 		String description = getValeurChamp( request, CHAMP_DESC );
 		String context = getValeurChamp( request, CHAMP_CONTEXT );
-		String echeanceBegin = getValeurChamp( request, CHAMP_ECHEANCEBEGIN );
-		String hourBegin = getValeurChamp( request, CHAMP_HOURBEGIN );
-		String minBegin = getValeurChamp( request, CHAMP_MINBEGIN );
-		String echeanceEnd = getValeurChamp( request, CHAMP_ECHEANCEEND );
-		String hourEnd = getValeurChamp( request, CHAMP_HOUREND );
-		String minEnd = getValeurChamp( request, CHAMP_MINEND );
+		String echeance = getValeurChamp( request, CHAMP_ECHEANCE);
 		int degres = Integer.parseInt(getValeurChamp( request, CHAMP_DEGRES ));
 
 		try {
@@ -73,48 +63,19 @@ public class CreateTodoForm {
 		todo.setContexte(context);
 		setContains(CHAMP_CONTEXT, context);
 		try {
-			validationEcheance(echeanceBegin);
+			validationEcheance(echeance);
 		} catch ( Exception e ) {
 			validate = false;
-			setErreur( CHAMP_ECHEANCEBEGIN, e.getMessage() );
+			setErreur( CHAMP_ECHEANCE, e.getMessage() );
 		}
-
-		Date date;
+		Date date = null;
 		try {
-			if(echeanceBegin != null)
-			{
-				echeanceBegin += " ";
-				echeanceBegin += hourBegin + ":";
-				echeanceBegin += minBegin + ":00";
-				date = dt.parse(echeanceBegin);
-				
-				todo.setEcheanceBegin(date);
-			}
-			else
-				validate = false;
+			date = dt.parse(echeance);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			validate = false;
 			e.printStackTrace();
-		} 
-		setContains(CHAMP_ECHEANCEBEGIN, echeanceBegin);
-		try {
-			if(echeanceEnd != null)
-			{
-				echeanceEnd += " ";
-				echeanceEnd += hourEnd + ":";
-				echeanceEnd += minEnd + ":00";
-				date = dt.parse(echeanceEnd);
-				todo.setEcheanceEnd(date);
-			}
-			else
-				validate = false;
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			validate = false;
-			e.printStackTrace();
-		} 
-		setContains(CHAMP_ECHEANCEEND, echeanceEnd);
+		}
+		todo.setEcheance(date);
 		
 		todo.setDegreImportance(degres);
 		selected = degres;

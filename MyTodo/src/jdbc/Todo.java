@@ -1,6 +1,6 @@
 package jdbc;
 
-// Generated 20 févr. 2014 12:59:52 by Hibernate Tools 4.0.0
+// Generated 20 févr. 2014 15:04:44 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 
@@ -14,23 +14,22 @@ public class Todo implements java.io.Serializable {
 	private String description;
 	private int degreImportance;
 	private String contexte;
-	private Date echeanceBegin;
-	private Date echeanceEnd;
+	private Date echeance;
 	private int fkIdUtilisateur;
+	private int state;
 
 	public Todo() {
 	}
 
 	public Todo(String titre, String description, int degreImportance,
-			String contexte, Date echeanceBegin, Date echeanceEnd,
-			int fkIdUtilisateur) {
+			String contexte, Date echeance, int fkIdUtilisateur, int state) {
 		this.titre = titre;
 		this.description = description;
 		this.degreImportance = degreImportance;
 		this.contexte = contexte;
-		this.echeanceBegin = echeanceBegin;
-		this.echeanceEnd = echeanceEnd;
+		this.echeance = echeance;
 		this.fkIdUtilisateur = fkIdUtilisateur;
+		this.state = state;
 	}
 
 	public Integer getIdTodo() {
@@ -73,20 +72,12 @@ public class Todo implements java.io.Serializable {
 		this.contexte = contexte;
 	}
 
-	public Date getEcheanceBegin() {
-		return this.echeanceBegin;
+	public Date getEcheance() {
+		return this.echeance;
 	}
 
-	public void setEcheanceBegin(Date echeanceBegin) {
-		this.echeanceBegin = echeanceBegin;
-	}
-
-	public Date getEcheanceEnd() {
-		return this.echeanceEnd;
-	}
-
-	public void setEcheanceEnd(Date echeanceEnd) {
-		this.echeanceEnd = echeanceEnd;
+	public void setEcheance(Date echeance) {
+		this.echeance = echeance;
 	}
 
 	public int getFkIdUtilisateur() {
@@ -95,6 +86,14 @@ public class Todo implements java.io.Serializable {
 
 	public void setFkIdUtilisateur(int fkIdUtilisateur) {
 		this.fkIdUtilisateur = fkIdUtilisateur;
+	}
+
+	public int getState() {
+		return this.state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
 	}
 
 }

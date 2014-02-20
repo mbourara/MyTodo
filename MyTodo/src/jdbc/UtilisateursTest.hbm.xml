@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20 f??vr. 2014 12:59:52 by Hibernate Tools 4.0.0 -->
+<!-- Generated 20 f??vr. 2014 15:04:44 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
     <class name="jdbc.UtilisateursTest" table="UtilisateursTest" catalog="amourany">
         <id name="idUtilisateur" type="java.lang.Integer">
