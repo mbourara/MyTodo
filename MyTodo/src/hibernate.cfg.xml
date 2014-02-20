@@ -14,6 +14,7 @@
         <mapping resource="jdbc/Todo.hbm.xml" />
         <mapping resource="jdbc/UtilisateursTest.hbm.xml" />
         <mapping resource="jdbc/TodoTest.hbm.xml" />
+        <mapping resource="jdbc/Synchro.hbm.xml" />
         <mapping resource="jdbc/Utilisateurs.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

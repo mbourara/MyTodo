@@ -25,6 +25,7 @@ public class Synchronisation extends HttpServlet {
 	public static final String ATT_SESSION_USER = "sessionUtilisateur";
 	public static final String ATT_FORM = "form";
 	
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -63,7 +64,7 @@ public class Synchronisation extends HttpServlet {
 		SynchronisationForm form = new SynchronisationForm();
 		form.synchro(request, (Utilisateurs) session.getAttribute(ATT_SESSION_USER));
 		
-		
+		request.setAttribute( ATT_FORM, form );
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 

@@ -11,13 +11,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class TodoTest.
- * @see jdbc.TodoTest
+ * Home object for domain model class Synchro.
+ * @see jdbc.Synchro
  * @author Hibernate Tools
  */
-public class TodoTestHome {
+public class SynchroHome {
 
-	private static final Log log = LogFactory.getLog(TodoTestHome.class);
+	private static final Log log = LogFactory.getLog(SynchroHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -32,8 +32,8 @@ public class TodoTestHome {
 		}
 	}
 
-	public void persist(TodoTest transientInstance) {
-		log.debug("persisting TodoTest instance");
+	public void persist(Synchro transientInstance) {
+		log.debug("persisting Synchro instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -43,8 +43,8 @@ public class TodoTestHome {
 		}
 	}
 
-	public void attachDirty(TodoTest instance) {
-		log.debug("attaching dirty TodoTest instance");
+	public void attachDirty(Synchro instance) {
+		log.debug("attaching dirty Synchro instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -54,8 +54,8 @@ public class TodoTestHome {
 		}
 	}
 
-	public void attachClean(TodoTest instance) {
-		log.debug("attaching clean TodoTest instance");
+	public void attachClean(Synchro instance) {
+		log.debug("attaching clean Synchro instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -65,8 +65,8 @@ public class TodoTestHome {
 		}
 	}
 
-	public void delete(TodoTest persistentInstance) {
-		log.debug("deleting TodoTest instance");
+	public void delete(Synchro persistentInstance) {
+		log.debug("deleting Synchro instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -76,10 +76,10 @@ public class TodoTestHome {
 		}
 	}
 
-	public TodoTest merge(TodoTest detachedInstance) {
-		log.debug("merging TodoTest instance");
+	public Synchro merge(Synchro detachedInstance) {
+		log.debug("merging Synchro instance");
 		try {
-			TodoTest result = (TodoTest) sessionFactory.getCurrentSession()
+			Synchro result = (Synchro) sessionFactory.getCurrentSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -89,11 +89,11 @@ public class TodoTestHome {
 		}
 	}
 
-	public TodoTest findById(java.lang.Integer id) {
-		log.debug("getting TodoTest instance with id: " + id);
+	public Synchro findById(java.lang.String id) {
+		log.debug("getting Synchro instance with id: " + id);
 		try {
-			TodoTest instance = (TodoTest) sessionFactory.getCurrentSession()
-					.get("jdbc.TodoTest", id);
+			Synchro instance = (Synchro) sessionFactory.getCurrentSession()
+					.get("jdbc.Synchro", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -106,11 +106,11 @@ public class TodoTestHome {
 		}
 	}
 
-	public List findByExample(TodoTest instance) {
-		log.debug("finding TodoTest instance by example");
+	public List findByExample(Synchro instance) {
+		log.debug("finding Synchro instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()
-					.createCriteria("jdbc.TodoTest")
+					.createCriteria("jdbc.Synchro")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

@@ -13,8 +13,8 @@
 			<c:when test="${sessionScope.sessionUtilisateur.gmail != null}">
 				<fieldset>
 					<select class="form-control" name="calendar">
-						<c:forEach var="i" begin="0" end="${form.getNbCalendar()-1}" step="1">
-							<option>${form.calendar[i]}</option>
+						<c:forEach var="i" begin="0" end="${form.getCalendar().size()-1}" step="1">
+							<option value="${i}">${form.calendar[i].getSecond()}</option>
 						</c:forEach>
 					</select> <input type="submit" value="Synchronisation" class="sansLabel" />
 					<br />
