@@ -1,6 +1,6 @@
 package jdbc;
 
-// Generated 20 févr. 2014 15:04:44 by Hibernate Tools 4.0.0
+// Generated 21 févr. 2014 11:09:10 by Hibernate Tools 4.0.0
 
 import java.util.List;
 import javax.naming.InitialContext;
@@ -89,7 +89,7 @@ public class SynchroHome {
 		}
 	}
 
-	public Synchro findById(java.lang.String id) {
+	public Synchro findById(jdbc.SynchroId id) {
 		log.debug("getting Synchro instance with id: " + id);
 		try {
 			Synchro instance = (Synchro) sessionFactory.getCurrentSession()
