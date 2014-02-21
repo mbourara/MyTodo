@@ -91,6 +91,7 @@ public class ModifyTodoForm {
 			validate = false;
 			e.printStackTrace();
 		} 
+
 		setContains(CHAMP_ECHEANCE, echeance);
 		
 		todo.setDegreImportance(degres);

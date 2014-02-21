@@ -65,4 +65,12 @@
     <servlet-name>ModifyTodo</servlet-name>
     <url-pattern>/modifyTodo</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>Suppression</servlet-name>
+    <servlet-class>servlets.Suppression</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Suppression</servlet-name>
+    <url-pattern>/suppression</url-pattern>
+  </servlet-mapping>
 </web-app>
