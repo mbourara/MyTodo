@@ -1,5 +1,6 @@
 package model;
 
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import jdbc.Utilisateurs;
 import org.hibernate.Session;
 
 import com.util.HibernateUtil;
+import com.util.MD5Util;
 
 public final class InscriptionForm {
 	private static final String CHAMP_EMAIL = "email";
@@ -190,7 +192,7 @@ public final class InscriptionForm {
 		Utilisateurs u = new Utilisateurs();
 
 		u.setLogin(login);
-		u.setMotDePasse(motDePasse);
+		u.setMotDePasse(MD5Util.cryptageMD5(motDePasse));	
 		u.setMail(mail);
 		if(gmail != null)
 			u.setGmail(gmail+EXTEND_GMAIL);

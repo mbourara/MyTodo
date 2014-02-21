@@ -1,18 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20 f??vr. 2014 15:04:44 by Hibernate Tools 4.0.0 -->
+<!-- Generated 21 f??vr. 2014 11:09:09 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
     <class name="jdbc.Synchro" table="Synchro" catalog="amourany">
-        <id name="fkIdEvent" type="string">
-            <column name="FK_ID_EVENT" />
-            <generator class="assigned" />
-        </id>
-        <property name="fkIdTodo" type="int">
-            <column name="FK_ID_TODO" not-null="true" />
-        </property>
-        <property name="idCalendar" type="int">
-            <column name="ID_Calendar" not-null="true" />
-        </property>
+        <composite-id name="id" class="jdbc.SynchroId">
+            <key-property name="fkIdTodo" type="int">
+                <column name="FK_ID_TODO" />
+            </key-property>
+            <key-property name="fkIdEvent" type="string">
+                <column name="FK_ID_EVENT" />
+            </key-property>
+            <key-property name="idCalendar" type="int">
+                <column name="ID_Calendar" />
+            </key-property>
+        </composite-id>
     </class>
 </hibernate-mapping>

@@ -23,6 +23,7 @@ import com.google.gdata.util.common.base.Pair;
 import com.util.HibernateUtil;
 
 import jdbc.Synchro;
+import jdbc.SynchroId;
 import jdbc.Todo;
 import jdbc.Utilisateurs;
 
@@ -87,8 +88,8 @@ public class SynchronisationForm {
 		{
 
 			List<Synchro> ListerSynchro = (List<Synchro>)session.createQuery(
-					"select s from Synchro s where s.fkIdTodo ='"+ t.getIdTodo() +"'"
-							+ "AND s.idCalendar = '" + idCalendar + "' ").list();
+					"select s from Synchro s where s.id.fkIdTodo ='"+ t.getIdTodo() +"'"
+							+ "AND s.id.idCalendar = '" + idCalendar + "' ").list();
 
 			CalendarEventEntry myEvent = editEvent(t);	
 
@@ -100,7 +101,7 @@ public class SynchronisationForm {
 				{
 					CalendarEventEntry matchEntry = (CalendarEventEntry)
 							myFeed.getEntries().get(i);
-					if(matchEntry.getId().equals(s.getFkIdEvent()))
+					if(matchEntry.getId().equals(s.getId().getFkIdEvent()))
 					{
 						exist = true;
 						updateEntry = matchEntry;
@@ -110,15 +111,15 @@ public class SynchronisationForm {
 			if(!exist)
 			{
 				CalendarEventEntry lastMatchEntry = myService.insert(postURL, myEvent);	
-
+				SynchroId syncId = new SynchroId(t.getIdTodo(), lastMatchEntry.getId() ,idCalendar );
+				
 				Synchro control = (Synchro)session.createQuery(
-						"select s from Synchro s where s.idCalendar ='"+ idCalendar +"'"
-								+ "AND s.fkIdTodo = '"+ t.getIdTodo() +"'").uniqueResult();
-
+						"select s from Synchro s where s.id.idCalendar ='"+ idCalendar +"'"
+								+ "AND s.id.fkIdTodo = '"+ t.getIdTodo() +"'").uniqueResult();
 
 				if(control == null)
 				{
-					Synchro sync = new Synchro( lastMatchEntry.getId(), t.getIdTodo(),idCalendar );				
+					Synchro sync = new Synchro( syncId);				
 					session = HibernateUtil.getSessionFactory().openSession();
 					session.beginTransaction();
 					session.save(sync);
@@ -126,15 +127,25 @@ public class SynchronisationForm {
 				}
 				else
 				{
-					String query = "UPDATE Synchro SET FK_ID_EVENT = '"+ lastMatchEntry.getId() +"' "
-							+ "WHERE FK_ID_TODO = '" + t.getIdTodo() + "' "
-							+ "AND ID_Calendar = '"+ idCalendar + "'";
-					SQLQuery sqlQuery = session.createSQLQuery(query);
-					sqlQuery.executeUpdate();
+					control.setId(syncId);
+					session = HibernateUtil.getSessionFactory().openSession();
+					session.beginTransaction();
+					session.update(control);
+					session.getTransaction().commit();	
 				}
 			}
 			else
 			{
+				//modification
+				if(t.getState() == 1)
+				{
+					t.setState(0);
+					session = HibernateUtil.getSessionFactory().openSession();
+					session.beginTransaction();
+					session.update(t);
+					session.getTransaction().commit();	
+					//myService.update(postURL, updateEntry);
+				}
 				// Synchronisation des modification et suppression des TODO.
 
 			}

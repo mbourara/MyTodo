@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.hibernate.Session;
 
 import com.util.HibernateUtil;
+import com.util.MD5Util;
 
 import jdbc.Utilisateurs;
 
@@ -108,8 +109,7 @@ public final class ConnexionForm {
 		}
 		if(loginTrouve){
 			//Verification du mdp
-
-			if(mdp.equals(user.getMotDePasse())){
+			if(MD5Util.cryptageMD5(mdp).equals(user.getMotDePasse())){
 				valide = true;
 				utilisateur.setGmail(user.getGmail());
 				utilisateur.setIdUtilisateur(user.getIdUtilisateur());
