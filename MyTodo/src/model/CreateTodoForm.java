@@ -70,10 +70,11 @@ public class CreateTodoForm {
 		}
 		Date date = null;
 		try {
-			date = dt.parse(echeance);
+			if(echeance != null)
+				date = dt.parse(echeance);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			validate = false;
+			//setErreur( CHAMP_ECHEANCE, e.getMessage() );
 		}
 		todo.setEcheance(date);
 		
