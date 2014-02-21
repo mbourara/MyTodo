@@ -56,7 +56,7 @@
 						
 						<div class="form-group">
 							<div class="col-md-6">
-								<input id="dateb" onclick="ds_sh(this);" name="dateb" readonly="readonly" style="cursor: text" class="form-control" 
+								<input id="date" onclick="ds_sh(this);" name="date" readonly="readonly" style="cursor: text" class="form-control" 
 								value="${todo.echeance}" />
 							</div>
 									
@@ -68,7 +68,7 @@
 						<label for="degres">Degrès d'importance : </label>
 						<select class="form-control" name="degres" size="1">
 							<c:forEach var="i" begin="0" end="100" step="1">
-								<option <c:if test="${ i == form.selected }" var="maVariable" scope="session">selected</c:if>>${i}
+								<option <c:if test="${ i == form.selected }" var="maVariable" scope="session">selected</c:if> ${todo.degreImportance == i ? 'selected="selected"' : '' }>${i}
 							</c:forEach>
 						</select>
 					</div>

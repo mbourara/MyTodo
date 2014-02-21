@@ -19,11 +19,7 @@ public class ModifyTodoForm {
 	public static final String CHAMP_TITLE   = "title";
 	public static final String CHAMP_DESC   = "description";
 	public static final String CHAMP_CONTEXT   = "contexte";
-	public static final String CHAMP_ECHEANCE   = "dateb";
-	public static final String CHAMP_HOURBEGIN   = "hourb";
-	public static final String CHAMP_MINBEGIN   = "minb";
-	public static final String CHAMP_HOUREND	= "houre";
-	public static final String CHAMP_MINEND   = "mine";
+	public static final String CHAMP_ECHEANCE   = "date";
 	public static final String CHAMP_DEGRES   = "degres";
 	public static final String CHAMP_ID_TODO = "idTodo";
 	public static final SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
