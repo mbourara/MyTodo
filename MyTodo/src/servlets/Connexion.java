@@ -26,7 +26,14 @@ public class Connexion extends HttpServlet {
 	public static final String VUE_VALID_CONNEXION = "http://localhost:8080/MyTodo/visualisation";
 
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+		HttpSession session = request.getSession();
+		
+		if ( session.getAttribute( ATT_SESSION_USER ) == null ) {
+			this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+		}
+		else{
+			response.sendRedirect( VUE_VALID_CONNEXION );
+		}
 	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
