@@ -28,6 +28,7 @@ public final class InscriptionForm {
 
 	private String resultat;
 	private Map<String, String> erreurs = new HashMap<String, String>();
+	private Map<String, String> contains = new HashMap<String, String>();
 
 	public String getResultat() {
 		return resultat;
@@ -36,7 +37,14 @@ public final class InscriptionForm {
 	public Map<String, String> getErreurs() {
 		return erreurs;
 	}
-
+	
+	public Map<String, String> getContains() {
+		return contains;
+	}
+	private void setContains( String champ, String message ) {
+		contains.put( champ, message );
+	}
+	
 	public Utilisateurs inscrireUtilisateur(HttpServletRequest request) {
 		String email = getValeurChamp(request, CHAMP_EMAIL);
 		String gmail = getValeurChamp(request, CHAMP_GMAIL);
@@ -46,7 +54,13 @@ public final class InscriptionForm {
 		String nom = getValeurChamp(request, CHAMP_NOM);
 		String prenom = getValeurChamp(request, CHAMP_PRENOM);
 		String login = getValeurChamp(request, CHAMP_LOGIN);
-
+		
+		setContains("email", email);
+		setContains("gmail", gmail);
+		setContains("nom", nom);
+		setContains("prenom", prenom);
+		setContains("loginI", login);
+		
 		Utilisateurs utilisateur = new Utilisateurs();
 
 		try {
