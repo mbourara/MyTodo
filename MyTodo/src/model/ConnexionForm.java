@@ -15,14 +15,15 @@ import com.util.MD5Util;
 import jdbc.Utilisateurs;
 
 public final class ConnexionForm {
-	public static final String CHAMP_PASS   = "motdepasse";
-	public static final String CHAMP_LOGIN  = "login";
+	public static final String CHAMP_PASS   = "motdepasseC";
+	public static final String CHAMP_LOGIN  = "loginC";
 	public static final String CHAMP_BD  = "bd";
 
 	private String              resultat;
 	private Boolean				validConnexion;
 	private Map<String, String> erreurs      = new HashMap<String, String>();
-
+	private Map<String, String> contains      = new HashMap<String, String>();
+	
 	public String getResultat() {
 		return resultat;
 	}
@@ -30,7 +31,12 @@ public final class ConnexionForm {
 	public Boolean getValidConnexion(){
 		return validConnexion;
 	}
-
+	public Map<String, String> getContains() {
+		return contains;
+	}
+	private void setContains( String champ, String message ) {
+		contains.put( champ, message );
+	}
 	public Map<String, String> getErreurs() {
 		return erreurs;
 	}
@@ -39,6 +45,9 @@ public final class ConnexionForm {
 		String motDePasse = getValeurChamp( request, CHAMP_PASS );
 		String login = getValeurChamp( request, CHAMP_LOGIN );
 
+		setContains("loginC", login);
+		setContains("motdepasseC", motDePasse);
+		
 		Utilisateurs utilisateur = new Utilisateurs();
 
 		try {
