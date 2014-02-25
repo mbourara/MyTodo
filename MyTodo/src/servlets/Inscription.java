@@ -14,7 +14,7 @@ public class Inscription extends HttpServlet {
 	public static final String ATT_USER = "utilisateur";
 	public static final String ATT_FORM = "form";
 	private static final String VUE_REDIRECTION = "http://localhost:8080/MyTodo/connexion";
-	public static String VUE = "/WEB-INF/inscription.jsp";
+	public static String VUE = "/WEB-INF/connexion.jsp";
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
