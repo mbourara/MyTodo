@@ -28,8 +28,8 @@
 	    <div class="collapse navbar-collapse navbar-right">
 
 		<ul class="nav nav-pills" id="logTab">
-		  	<li class="active"><a href="#connexion">Connexion</a></li>
-		  	<li><a href="#inscription">Inscription</a></li>
+		  	<li ${form.contains['type'] != 'inscription' ? ' class="active"' : ''}><a href="#connexion">Connexion</a></li>
+		  	<li ${form.contains['type'] == 'inscription' ? ' class="active"' : ''}><a href="#inscription">Inscription</a></li>
 		</ul>
 
 	    </div><!-- /.navbar-collapse -->
@@ -37,8 +37,8 @@
 	</nav>
 	
 	<div class="tab-content">
-		<div class="tab-pane active" id="connexion"><%@ include file="connexionForm.jsp" %></div>
-		<div class="tab-pane" id="inscription"><%@ include file="inscriptionForm.jsp" %></div>
+		<div class="tab-pane ${form.contains['type'] != 'inscription' ? ' active' : ''}" id="connexion"><%@ include file="connexionForm.jsp" %></div>
+		<div class="tab-pane ${form.contains['type'] == 'inscription' ? ' active' : ''}" id="inscription"><%@ include file="inscriptionForm.jsp" %></div>
 	</div>	
 	</div>	
 	

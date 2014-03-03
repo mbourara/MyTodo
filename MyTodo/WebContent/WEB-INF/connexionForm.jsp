@@ -7,6 +7,7 @@
 		<div class="col-md-offset-4 col-md-4 well well-lg">
 			<div class="row">
 				<form role="form" method="post" action="Connexion">
+					<input type="hidden" name="type" value="connexion">
 					<div class="form-group col-md-12 ${form.erreurs['loginC'] != null ? ' has-error' : ''} ">
 						<label for="loginC">Login</label> <input type="text" class="form-control" id="loginC" name="loginC" placeholder="Login" value="${form.contains['loginC']}"/>
 					</div>
