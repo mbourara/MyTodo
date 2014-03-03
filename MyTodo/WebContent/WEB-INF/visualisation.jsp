@@ -31,7 +31,7 @@
 		</div>
 		<!-- /.container-fluid --> </nav>
 
-
+		<div class="row">
 		<div class="col-md-3 well">
 			<%-- Vérification de la présence d'un objet utilisateur en session --%>
 			<c:if test="${!empty sessionScope.sessionUtilisateur}">
@@ -39,57 +39,23 @@
 				<p class="succes">Vous êtes connecté(e) avec le login :
 					${sessionScope.sessionUtilisateur.login}</p>
 			</c:if>
-			<div class="col-md-12">
-				<a href="createTodo" class="btn btn-primary">Créer un TODO</a>
-			</div>
-			<div class="col-md-12">
-				<a href="synchronisation" class="btn btn-primary">Synchronisation
-					Google Calendar</a>
-			</div>
+			
+			<ul class="nav nav-pills nav-stacked" id="visuTab">
+			  <li class="active"><a href="#visualisation">Visualisation des Todos</a></li>
+			  <li><a href="#creertodo">Créer un Todo</a></li>
+			  <li><a href="#creertag">Créer un Tag</a></li>
+			  <li><a href="#synchro">Synchronisation avec GCalendar</a></li>
+			</ul>
 		</div>
-		<div class="col-md-8 col-md-offset-1 well">
-			<div class="col-md-12">Bienvenue dans la visualisation de vos
-				Todo !!</div>
-			<c:if test="${!empty sessionScope.sessionUtilisateur}">
-
-				<!-- Affichage des TODOs -->
-				<div class="col-md-12">Nombre de TODO : ${visu.nbTodo}</div>
-				<div class="col-md-12">
-					<div class="panel-group" id="accordion">
-
-						<!-- Pour chaque Todo ... -->
-						<c:forEach items="${todo}" var="myTodo">
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordion"
-										href="#${myTodo.idTodo}"> Titre : ${myTodo.titre} </a>
-									<a href="http://localhost:8080/MyTodo/suppression?deleteTodo=${myTodo.idTodo}">
-							<button	type="button" class="close">&times;</button></a>
-								</h4>
-								</div>
-								<div id="${myTodo.idTodo}" class="panel-collapse collapse">
-									<div class="panel-body">
-										Contexte : ${myTodo.contexte} <br /> Description :
-										${myTodo.description} <br /> Priorité :
-										${myTodo.degreImportance} <br /> Echéance :
-										${myTodo.echeance}
-										
-										<form method="post" action="modifyTodo">
-							<input name="IDTodo" type="hidden" value="${myTodo.idTodo}">
-							<input border=0 src="./img/pencil-icon.png" type="image" Value="submit" align="right">
-										</form>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-
-					</div>
-				</div>
+		<div class="col-md-9 well">
+			<div class="tab-content">
+				<div class="tab-pane active" id="visualisation"><%@ include file="visuTodoForm.jsp" %></div>
+				<div class="tab-pane ${form.contains['type'] == 'inscription' ? ' active' : ''}" id="creertodo"><%@ include file="createTodo.jsp" %></div>
+				<div class="tab-pane ${form.contains['type'] == 'inscription' ? ' active' : ''}" id="creertag"><%@ include file="createTag.jsp" %></div>
+				<div class="tab-pane ${form.contains['type'] == 'inscription' ? ' active' : ''}" id="synchro"><%@ include file="synchronisation.jsp" %></div>
+			</div>	
 		</div>
 	</div>
-	</c:if>
 
 	<c:if test="${empty sessionScope.sessionUtilisateur}">
 			==================== /!\ ======================<br />
@@ -101,4 +67,11 @@
 <script type="text/javascript"><%@include file="lib/css/js/jquery.js" %></script>
 <script type="text/javascript"><%@include file="lib/css/js/bootstrap.min.js" %></script>
 <script type="text/javascript"><%@include file="lib/css/js/bootstrap.js" %></script>
+
+<script type="text/javascript">
+$('#visuTab a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	})
+</script>
 </html>
