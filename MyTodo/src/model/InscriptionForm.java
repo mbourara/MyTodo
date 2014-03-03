@@ -60,6 +60,7 @@ public final class InscriptionForm {
 		setContains("nom", nom);
 		setContains("prenom", prenom);
 		setContains("loginI", login);
+		setContains("type", "inscription");
 		
 		Utilisateurs utilisateur = new Utilisateurs();
 

@@ -7,24 +7,25 @@
 		
 		<div class="col-md-offset-4 col-md-4">
 			<div class="row well">
-				<form role="form" method="post" action="inscription">
+				<form role="form" method="post" action="Connexion">
+					<input type="hidden" name="type" value="inscription">
 					<div class="form-group ${form.erreurs['prenom'] != null ? ' has-error' : ''} ">
-						<label for="prenom">Prénom</label> <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom" />
+						<label for="prenom">Prénom</label> <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom" value="${form.contains['prenom']}"/>
 					</div>
 					<div class="${form.erreurs['prenom'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['prenom']}</div>
 					
 					<div class="form-group ${form.erreurs['nom'] != null ? ' has-error' : ''} ">
-						<label for="nom">Nom</label> <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" />
+						<label for="nom">Nom</label> <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" value="${form.contains['nom']}"/>
 					</div>
 					<div class="${form.erreurs['nom'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['nom']}</div>
 					
 					<div class="form-group ${form.erreurs['email'] != null ? ' has-error' : ''} ">
-						<label for="email">Adresse email</label> <input type="text" class="form-control" id="email" name="email" maxlength="60" placeholder="Adresse email" />
+						<label for="email">Adresse email</label> <input type="text" class="form-control" id="email" name="email" maxlength="60" placeholder="Adresse email" value="${form.contains['email']}"/>
 					</div>
 					<div class="${form.erreurs['email'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['email']}</div>
 					
 					<div class="form-group ${form.erreurs['login'] != null ? ' has-error' : ''} ">
-						<label for="login">Login</label> <input type="text" class="form-control" id="login" name="login" maxlength="20" placeholder="Login" />
+						<label for="login">Login</label> <input type="text" class="form-control" id="login" name="login" maxlength="20" placeholder="Login" value="${form.contains['login']}"/>
 					</div>
 					<div class="${form.erreurs['login'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['login']}</div>
 						
@@ -41,7 +42,7 @@
 					<div class="form-group ${form.erreurs['gmail'] != null ? ' has-error' : ''} ">
 						<label for="gmail">Adresse Gmail</label>
 						<div class="input-group">
-							<input type="text" class="form-control" id="gemail" name="gmail" maxlength="60" placeholder="Adresse Gmail" />
+							<input type="text" class="form-control" id="gemail" name="gmail" maxlength="60" placeholder="Adresse Gmail" value="${form.contains['gmail']}"/>
 						<span class="input-group-addon">@gmail.com</span>
 						</div>
 					</div>

@@ -46,6 +46,7 @@ public final class ConnexionForm {
 
 		setContains("loginC", login);
 		setContains("motdepasseC", motDePasse);
+		setContains("type", "connexion");
 		
 		Utilisateurs utilisateur = new Utilisateurs();
 
