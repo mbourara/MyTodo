@@ -47,6 +47,25 @@
 					Google Calendar</a>
 			</div>
 		</div>
+		
+		<div class="col-md-8 col-md-offset-1 well">		
+		<c:set var="adj" value="Aujourd'hui"/>
+			<form method="post" action="visualisation">
+				Filtrer vos TODO(s) : <c:if test="${filtre eq 'Tous'}"><b></c:if>
+				<input name="typeFiltre" type="submit" Value="Tous">
+				<c:if test="${filtre eq 'Tous'}"></b></c:if> 
+				- <c:if test="${filtre eq adj}"><b></c:if>
+				<input name="typeFiltre" type="submit" Value="Aujourd'hui"><br />
+				<c:if test="${filtre eq adj}"></b></c:if>
+				Trier vos TODO(s) : <c:if test="${tri eq 'Date de creation'}"><b></c:if>
+				<input name="typeTri" type="submit" Value="Date de creation">
+				<c:if test="${tri eq 'Date de creation'}"></b></c:if> 
+				- <c:if test="${tri eq 'Priorite'}"><b></c:if>
+				<input name="typeTri" type="submit" Value="Priorite">
+				<c:if test="${tri eq 'Priorite'}"></b></c:if>
+			</form>
+		</div>
+		
 		<div class="col-md-8 col-md-offset-1 well">
 			<div class="col-md-12">Bienvenue dans la visualisation de vos
 				Todo !!</div>
@@ -87,10 +106,10 @@
 
 					</div>
 				</div>
+			</c:if>
 		</div>
 	</div>
-	</c:if>
-
+	
 	<c:if test="${empty sessionScope.sessionUtilisateur}">
 			==================== /!\ ======================<br />
 			Veuillez vous connecter pour visualiser vos TODOs.<br />

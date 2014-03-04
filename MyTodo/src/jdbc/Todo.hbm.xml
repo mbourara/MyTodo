@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21 f??vr. 2014 11:09:09 by Hibernate Tools 4.0.0 -->
+<!-- Generated 4 mars 2014 12:52:04 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
     <class name="jdbc.Todo" table="Todo" catalog="amourany">
         <id name="idTodo" type="java.lang.Integer">
@@ -25,9 +25,6 @@
         </property>
         <property name="fkIdUtilisateur" type="int">
             <column name="FK_ID_Utilisateur" not-null="true" />
-        </property>
-        <property name="state" type="int">
-            <column name="State" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

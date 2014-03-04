@@ -137,7 +137,7 @@ public class SynchronisationForm {
 			else
 			{
 				//modification
-				if(t.getState() == 1)
+			/*	if(t.getState() == 1)
 				{
 					t.setState(0);
 					session = HibernateUtil.getSessionFactory().openSession();
@@ -147,7 +147,7 @@ public class SynchronisationForm {
 					//myService.update(postURL, updateEntry);
 				}
 				// Synchronisation des modification et suppression des TODO.
-
+*/
 			}
 		}
 
