@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 mars 2014 14:38:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="jdbc.UtilisateursTest" table="UtilisateursTest" catalog="amourany">
+        <id name="idUtilisateur" type="java.lang.Integer">
+            <column name="ID_Utilisateur" />
+            <generator class="identity" />
+        </id>
+        <property name="login" type="string">
+            <column name="Login" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="motDePasse" type="string">
+            <column name="Mot_de_passe" not-null="true" />
+        </property>
+        <property name="mail" type="string">
+            <column name="Mail" not-null="true" />
+        </property>
+        <property name="nom" type="string">
+            <column name="Nom" not-null="true" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="Prenom" not-null="true" />
+        </property>
+        <property name="gmail" type="string">
+            <column name="GMail" />
+        </property>
+        <property name="gmotDePasse" type="string">
+            <column name="GMot_de_passe" />
+        </property>
+    </class>
+</hibernate-mapping>
