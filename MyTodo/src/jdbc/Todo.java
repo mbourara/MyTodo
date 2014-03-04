@@ -1,6 +1,6 @@
 package jdbc;
 
-// Generated 21 févr. 2014 11:09:09 by Hibernate Tools 4.0.0
+// Generated 4 mars 2014 12:49:37 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 
@@ -16,20 +16,18 @@ public class Todo implements java.io.Serializable {
 	private String contexte;
 	private Date echeance;
 	private int fkIdUtilisateur;
-	private int state;
 
 	public Todo() {
 	}
 
 	public Todo(String titre, String description, int degreImportance,
-			String contexte, Date echeance, int fkIdUtilisateur, int state) {
+			String contexte, Date echeance, int fkIdUtilisateur) {
 		this.titre = titre;
 		this.description = description;
 		this.degreImportance = degreImportance;
 		this.contexte = contexte;
 		this.echeance = echeance;
 		this.fkIdUtilisateur = fkIdUtilisateur;
-		this.state = state;
 	}
 
 	public Integer getIdTodo() {
@@ -86,14 +84,6 @@ public class Todo implements java.io.Serializable {
 
 	public void setFkIdUtilisateur(int fkIdUtilisateur) {
 		this.fkIdUtilisateur = fkIdUtilisateur;
-	}
-
-	public int getState() {
-		return this.state;
-	}
-
-	public void setState(int state) {
-		this.state = state;
 	}
 
 }

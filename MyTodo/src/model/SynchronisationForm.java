@@ -47,7 +47,7 @@ public class SynchronisationForm {
 	public CalendarEventEntry editEvent(Todo t)
 	{
 		CalendarEventEntry myEvent = new CalendarEventEntry();
-		
+
 		myEvent.setTitle(new PlainTextConstruct(t.getTitre()));
 		myEvent.setContent(new PlainTextConstruct(t.getDescription()));
 
@@ -59,98 +59,97 @@ public class SynchronisationForm {
 		eventTimes.setEndTime(endTime);
 		myEvent.addTime(eventTimes);
 
-		Where where = new Where();
-		where.setValueString(t.getContexte());
-
-		myEvent.addLocation(where);
-		
 		return myEvent;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private void insertionCalendar(Utilisateurs utilisateur, int idCalendar) throws Exception {
-
+		// Récupération de la liste des todo de l'utilisateur.
 		Session session = HibernateUtil.getSessionFactory().openSession(); 
 		session.beginTransaction(); 
-
 		List<Todo> ListerTodo;
 		ListerTodo= (List<Todo>)session.createQuery("select t from Todo t where t.fkIdUtilisateur ='"+ utilisateur.getIdUtilisateur() +"'").list();
-
+		session.getTransaction().commit();
+		
+		// Récupération de la liste des todo dans le calendar.
 		CalendarService myService = new CalendarService(CALENDAR_PARAM);
 		myService.setUserCredentials(utilisateur.getGmail(), utilisateur.getGmotDePasse());	
-
 		URL postURL = new URL("http://www.google.com/calendar/feeds/" + 
 				calendar.get(idCalendar).getFirst() + "/private/full");		
-
 		CalendarEventFeed myFeed = myService.getFeed(postURL, CalendarEventFeed.class);
 
-		for(Todo t : ListerTodo)
+		
+		// Liste des todo a supprimer :
+		
+		List<Synchro> ListerSynchroSuppr = (List<Synchro>)session.createQuery(
+				"select s from Synchro s where s.id.idCalendar = '" + idCalendar + "' "
+						+ " AND s.id.fkIdTodo NOT IN"
+						+ " (select t from Todo t where t.fkIdUtilisateur ='"+ utilisateur.getIdUtilisateur() +"')").list();
+		for(int i=0; i<myFeed.getEntries().size(); i++)
 		{
-
-			List<Synchro> ListerSynchro = (List<Synchro>)session.createQuery(
-					"select s from Synchro s where s.id.fkIdTodo ='"+ t.getIdTodo() +"'"
-							+ "AND s.id.idCalendar = '" + idCalendar + "' ").list();
-
-			CalendarEventEntry myEvent = editEvent(t);	
-
-			boolean exist = false;
-			CalendarEventEntry updateEntry = null;
-			for(int i=0; i<myFeed.getEntries().size(); i++)
+			CalendarEventEntry matchEntry = (CalendarEventEntry)
+					myFeed.getEntries().get(i);
+			for(Synchro s : ListerSynchroSuppr)
 			{
-				for(Synchro s : ListerSynchro)
+				if(matchEntry.getId().equals(s.getId().getFkIdEvent()))
 				{
-					CalendarEventEntry matchEntry = (CalendarEventEntry)
-							myFeed.getEntries().get(i);
-					if(matchEntry.getId().equals(s.getId().getFkIdEvent()))
-					{
-						exist = true;
-						updateEntry = matchEntry;
-					}
+					matchEntry.delete();
 				}
-			}		
-			if(!exist)
-			{
-				CalendarEventEntry lastMatchEntry = myService.insert(postURL, myEvent);	
-				SynchroId syncId = new SynchroId(t.getIdTodo(), lastMatchEntry.getId() ,idCalendar );
-				
-				Synchro control = (Synchro)session.createQuery(
-						"select s from Synchro s where s.id.idCalendar ='"+ idCalendar +"'"
-								+ "AND s.id.fkIdTodo = '"+ t.getIdTodo() +"'").uniqueResult();
-
-				if(control == null)
-				{
-					Synchro sync = new Synchro( syncId);				
-					session = HibernateUtil.getSessionFactory().openSession();
-					session.beginTransaction();
-					session.save(sync);
-					session.getTransaction().commit();
-				}
-				else
-				{
-					control.setId(syncId);
-					session = HibernateUtil.getSessionFactory().openSession();
-					session.beginTransaction();
-					session.update(control);
-					session.getTransaction().commit();	
-				}
-			}
-			else
-			{
-				//modification
-				if(t.getState() == 1)
-				{
-					t.setState(0);
-					session = HibernateUtil.getSessionFactory().openSession();
-					session.beginTransaction();
-					session.update(t);
-					session.getTransaction().commit();	
-					//myService.update(postURL, updateEntry);
-				}
-				// Synchronisation des modification et suppression des TODO.
-
 			}
 		}
 
+		session.beginTransaction(); 
+		for(Synchro s : ListerSynchroSuppr)
+		{
+			session.delete(s);
+		}
+		session.getTransaction().commit();
+
+		//Synchronisation pour chacun des todo.
+		for(Todo t : ListerTodo)
+		{
+			// Récupére la list des todo déjà de la précédente synchronisation
+			session.beginTransaction(); 
+			List<Synchro> ListerSynchro = (List<Synchro>)session.createQuery(
+					"select s from Synchro s where s.id.fkIdTodo ='"+ t.getIdTodo() +"'"
+							+ "AND s.id.idCalendar = '" + idCalendar + "' ").list();
+			session.getTransaction().commit();
+
+
+			//Récupère l'élement deja synchronisé ou non
+			for(int i=0; i<myFeed.getEntries().size(); i++)
+			{
+				CalendarEventEntry matchEntry = (CalendarEventEntry)
+						myFeed.getEntries().get(i);
+				for(Synchro s : ListerSynchro)
+				{
+					if(matchEntry.getId().equals(s.getId().getFkIdEvent()))
+					{
+						matchEntry.delete();
+					}
+				}
+			}
+			
+			session.beginTransaction(); 
+			// Suppression des données existantes.
+			for(Synchro s : ListerSynchro)
+			{
+				session.delete(s);
+			}
+			session.getTransaction().commit();
+			
+			// Insertion des nouvelles données.
+			session.beginTransaction(); 
+			CalendarEventEntry myEvent = editEvent(t);	
+			CalendarEventEntry lastMatchEntry = myService.insert(postURL, myEvent);	
+			SynchroId syncId = new SynchroId(t.getIdTodo(), lastMatchEntry.getId() ,idCalendar );
+			Synchro sync = new Synchro( syncId);				
+			session.save(sync);
+			session.getTransaction().commit();
+			
+
+		}
+		session.close();
 	}
 
 	public void generateCalendar(Utilisateurs utilisateur) throws Exception 
