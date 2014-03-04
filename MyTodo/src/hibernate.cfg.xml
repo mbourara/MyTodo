@@ -11,6 +11,7 @@
         <property name="hibernate.connection.username">amourany</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
+        <mapping resource="jdbc/Contexte.hbm.xml" />
         <mapping resource="jdbc/Todo.hbm.xml" />
         <mapping resource="jdbc/UtilisateursTest.hbm.xml" />
         <mapping resource="jdbc/TodoTest.hbm.xml" />
