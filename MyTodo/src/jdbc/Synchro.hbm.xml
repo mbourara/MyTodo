@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2014 14:03:57 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="jdbc.Synchro" table="Synchro" catalog="amourany">
+        <composite-id name="id" class="jdbc.SynchroId">
+            <key-property name="fkIdTodo" type="int">
+                <column name="FK_ID_TODO" />
+            </key-property>
+            <key-property name="fkIdEvent" type="string">
+                <column name="FK_ID_EVENT" />
+            </key-property>
+            <key-property name="idCalendar" type="int">
+                <column name="ID_Calendar" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2014 14:03:57 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="jdbc.Todo" table="Todo" catalog="amourany">
+        <id name="idTodo" type="java.lang.Integer">
+            <column name="ID_Todo" />
+            <generator class="identity" />
+        </id>
+        <property name="titre" type="string">
+            <column name="Titre" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" not-null="true" />
+        </property>
+        <property name="degreImportance" type="int">
+            <column name="Degre_importance" not-null="true" />
+        </property>
+        <property name="contexte" type="int">
+            <column name="Contexte" not-null="true" />
+        </property>
+        <property name="echeance" type="timestamp">
+            <column name="Echeance" length="19" not-null="true" />
+        </property>
+        <property name="fkIdUtilisateur" type="int">
+            <column name="FK_ID_Utilisateur" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
