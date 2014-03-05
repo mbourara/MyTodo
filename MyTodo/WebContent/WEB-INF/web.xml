@@ -29,14 +29,6 @@
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>CreateTodo</servlet-name>
-    <servlet-class>servlets.CreateTodo</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreateTodo</servlet-name>
-    <url-pattern>/createTodo</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>Synchronisation</servlet-name>
     <servlet-class>servlets.Synchronisation</servlet-class>
   </servlet>

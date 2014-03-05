@@ -2,7 +2,8 @@
 		
 		<div class="col-md-offset-3 col-md-8">
 			<div class="row">
-				<form role="form" method="post" action="Visualisation">
+				<form role="form" method="post" action="visualisation">
+					<input type="hidden" value="createTodo"	name="type">
 					<div class="form-group col-md-12 ${form.erreurs['title'] != null ? ' has-error' : ''} ">
 						<label for="title">Titre</label> 
 						<input type="text" class="form-control" id="title" name="title" value="${form.contains['title']}" placeholder="Titre du Todo" />

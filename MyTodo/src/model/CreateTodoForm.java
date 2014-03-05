@@ -37,6 +37,8 @@ public class CreateTodoForm {
 		String context = getValeurChamp( request, CHAMP_CONTEXT );
 		String echeance = getValeurChamp( request, CHAMP_ECHEANCE);
 		int degres = Integer.parseInt(getValeurChamp( request, CHAMP_DEGRES ));
+		
+		setContains("type", "createTodo");
 
 		try {
 			validationTitle( title );

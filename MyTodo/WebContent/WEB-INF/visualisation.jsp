@@ -45,18 +45,18 @@
 			</c:if>
 			
 			<ul class="nav nav-pills nav-stacked" id="visuTab">
-			  <li class="active"><a href="#visualisation">Visualisation des Todos</a></li>
-			  <li><a href="#creertodo">Créer un Todo</a></li>
-			  <li><a href="#creertag">Créer un Tag</a></li>
-			  <li><a href="#synchro">Synchronisation avec GCalendar</a></li>
+			  <li ${form.contains['type'] == 'null' ? ' class="active"' : ''}><a href="#visualisation">Visualisation des Todos</a></li>
+			  <li ${form.contains['type'] == 'createTodo' ? ' class="active"' : ''}><a href="#creertodo">Créer un Todo</a></li>
+			  <li ${form.contains['type'] == 'createTag' ? ' class="active"' : ''}><a href="#creertag">Créer un Tag</a></li>
+			  <li ${form.contains['type'] == 'synchro' ? ' class="active"' : ''}><a href="#synchro">Synchronisation avec GCalendar</a></li>
 			</ul>
 		</div>
 		<div class="col-md-9 well">
 			<div class="tab-content">
-				<div class="tab-pane active" id="visualisation"><%@ include file="visuTodoForm.jsp" %></div>
-				<div class="tab-pane ${form.contains['type'] == 'inscription' ? ' active' : ''}" id="creertodo"><%@ include file="createTodo.jsp" %></div>
-				<div class="tab-pane ${form.contains['type'] == 'inscription' ? ' active' : ''}" id="creertag"><%@ include file="createTag.jsp" %></div>
-				<div class="tab-pane ${form.contains['type'] == 'inscription' ? ' active' : ''}" id="synchro"><%@ include file="synchronisation.jsp" %></div>
+				<div class="tab-pane ${form.contains['type'] == 'null' ? ' active' : ''}" id="visualisation"><%@ include file="visuTodoForm.jsp" %></div>
+				<div class="tab-pane ${form.contains['type'] == 'createTodo' ? ' active' : ''}" id="creertodo"><%@ include file="createTodo.jsp" %></div>
+				<div class="tab-pane ${form.contains['type'] == 'createTag' ? ' active' : ''}" id="creertag"><%@ include file="createTag.jsp" %></div>
+				<div class="tab-pane ${form.contains['type'] == 'synchro' ? ' active' : ''}" id="synchro"><%@ include file="synchronisation.jsp" %></div>
 			</div>	
 		</div>
 	</div>
