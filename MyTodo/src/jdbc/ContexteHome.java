@@ -11,13 +11,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class Utilisateurs.
- * @see jdbc.Utilisateurs
+ * Home object for domain model class Contexte.
+ * @see jdbc.Contexte
  * @author Hibernate Tools
  */
-public class UtilisateursHome {
+public class ContexteHome {
 
-	private static final Log log = LogFactory.getLog(UtilisateursHome.class);
+	private static final Log log = LogFactory.getLog(ContexteHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -32,8 +32,8 @@ public class UtilisateursHome {
 		}
 	}
 
-	public void persist(Utilisateurs transientInstance) {
-		log.debug("persisting Utilisateurs instance");
+	public void persist(Contexte transientInstance) {
+		log.debug("persisting Contexte instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -43,8 +43,8 @@ public class UtilisateursHome {
 		}
 	}
 
-	public void attachDirty(Utilisateurs instance) {
-		log.debug("attaching dirty Utilisateurs instance");
+	public void attachDirty(Contexte instance) {
+		log.debug("attaching dirty Contexte instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -54,8 +54,8 @@ public class UtilisateursHome {
 		}
 	}
 
-	public void attachClean(Utilisateurs instance) {
-		log.debug("attaching clean Utilisateurs instance");
+	public void attachClean(Contexte instance) {
+		log.debug("attaching clean Contexte instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -65,8 +65,8 @@ public class UtilisateursHome {
 		}
 	}
 
-	public void delete(Utilisateurs persistentInstance) {
-		log.debug("deleting Utilisateurs instance");
+	public void delete(Contexte persistentInstance) {
+		log.debug("deleting Contexte instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -76,11 +76,11 @@ public class UtilisateursHome {
 		}
 	}
 
-	public Utilisateurs merge(Utilisateurs detachedInstance) {
-		log.debug("merging Utilisateurs instance");
+	public Contexte merge(Contexte detachedInstance) {
+		log.debug("merging Contexte instance");
 		try {
-			Utilisateurs result = (Utilisateurs) sessionFactory
-					.getCurrentSession().merge(detachedInstance);
+			Contexte result = (Contexte) sessionFactory.getCurrentSession()
+					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -89,11 +89,11 @@ public class UtilisateursHome {
 		}
 	}
 
-	public Utilisateurs findById(java.lang.Integer id) {
-		log.debug("getting Utilisateurs instance with id: " + id);
+	public Contexte findById(java.lang.Integer id) {
+		log.debug("getting Contexte instance with id: " + id);
 		try {
-			Utilisateurs instance = (Utilisateurs) sessionFactory
-					.getCurrentSession().get("jdbc.Utilisateurs", id);
+			Contexte instance = (Contexte) sessionFactory.getCurrentSession()
+					.get("jdbc.Contexte", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -106,11 +106,11 @@ public class UtilisateursHome {
 		}
 	}
 
-	public List findByExample(Utilisateurs instance) {
-		log.debug("finding Utilisateurs instance by example");
+	public List findByExample(Contexte instance) {
+		log.debug("finding Contexte instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()
-					.createCriteria("jdbc.Utilisateurs")
+					.createCriteria("jdbc.Contexte")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

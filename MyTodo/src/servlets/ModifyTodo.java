@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import jdbc.Contexte;
 import jdbc.Todo;
 import jdbc.Utilisateurs;
 import model.ModifyTodoForm;
@@ -22,6 +24,7 @@ public class ModifyTodo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String ATT_TODO = "todo";
 	public static final String ATT_FORM = "form";
+	public static final String ATT_CONT = "contexte";
 	public static final String ATT_SESSION_USER = "sessionUtilisateur";
 	public static final String VUE          = "/WEB-INF/modifyTodo.jsp";
 	public static final String VUE_VISU = "http://localhost:8080/MyTodo/visualisation";
@@ -39,6 +42,10 @@ public class ModifyTodo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		ModifyTodoForm form = new ModifyTodoForm();
+		ArrayList<Contexte> mesCont = form.chargementContextes(request);
+		request.setAttribute( ATT_CONT, mesCont );
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 
@@ -50,6 +57,8 @@ public class ModifyTodo extends HttpServlet {
 		HttpSession session = request.getSession();
 		VisuTodo visu = new VisuTodo();
 		ModifyTodoForm form = new ModifyTodoForm();
+		ArrayList<Contexte> mesCont = form.chargementContextes(request);
+		request.setAttribute( ATT_CONT, mesCont );
 		
 		if(request.getParameter("IDTodo")!= null) {
 			int idTodo = Integer.parseInt(request.getParameter("IDTodo"));

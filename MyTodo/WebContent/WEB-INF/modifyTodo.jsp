@@ -47,7 +47,12 @@
 					
 					<div class="form-group col-md-12 ${form.erreurs['contexte'] != null ? ' has-error' : ''} ">
 						<label for="contexte">Contexte</label> 
-						<input type="text" class="form-control" id="contexte" name="contexte" value="${todo.contexte}" placeholder="Contexte" />
+						<select class="form-control" name="contexte" id="contexte">
+							
+							<c:forEach items="${contexte}" var="myCont">
+								<option value="${myCont.idContexte}">${myCont.nom}</option>
+							</c:forEach>
+						</select>
 					</div>
 					<div class="${form.erreurs['contexte'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['contexte']}</div>
 					

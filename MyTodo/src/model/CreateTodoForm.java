@@ -2,16 +2,20 @@ package model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 
 import com.util.HibernateUtil;
 
+import jdbc.Contexte;
 import jdbc.Todo;
 import jdbc.Utilisateurs;
 
@@ -27,6 +31,7 @@ public class CreateTodoForm {
 	private Map<String, String> contains      = new HashMap<String, String>();
 	private int selected	= 0;
 	private boolean validate = true;
+	private ArrayList<Contexte> listContexte = new ArrayList<Contexte>();
 
 	public Todo inscrireTodo( HttpServletRequest request, Utilisateurs utilisateurs )
 	{
@@ -60,7 +65,7 @@ public class CreateTodoForm {
 			validate = false;
 			setErreur( CHAMP_CONTEXT, e.getMessage() );
 		}
-		todo.setContexte(context);
+		todo.setContexte(Integer.parseInt(context));
 		setContains(CHAMP_CONTEXT, context);
 		try {
 			validationEcheance(echeance);
@@ -119,6 +124,33 @@ public class CreateTodoForm {
 		if ( echeance == null ) {
 			throw new Exception("Le champ echeance est vide.");
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Contexte> chargementContextes( HttpServletRequest request ){
+		//Recuperation de l'id de l'utilisateur connecté
+		int connectedUser;
+		HttpSession sessionUser = request.getSession();
+		Utilisateurs us = (Utilisateurs) sessionUser.getAttribute("sessionUtilisateur");
+		connectedUser = us.getIdUtilisateur();
+		
+		//Recuperation dans la BD
+		Session session = HibernateUtil.getSessionFactory().openSession(); 
+		session.beginTransaction(); 
+		
+		List<Contexte> listeContexte;
+		listeContexte= (List<Contexte>)session.createQuery("select c from Contexte c where "
+				+ "c.fkIdUtilisateur ='"+ connectedUser +"'").list();
+
+		for(Contexte t : listeContexte){
+				listContexte.add(t);
+		}
+		
+		//Fermeture de session
+		session.getTransaction().commit(); 
+		session.close();
+
+		return listContexte;
 	}
 
 	public int getSelected()
