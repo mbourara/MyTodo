@@ -10,6 +10,10 @@
 <%@include file="lib/css/css/bootstrap.min.css" %>
 </style>
 
+<style>
+<%@include file="lib/css/css/calendar.css" %> 
+</style>
+
 <title>MyTodo</title>
 </head>
 <body>
@@ -31,7 +35,7 @@
 		</div>
 		<!-- /.container-fluid --> </nav>
 
-		<div class="row">
+		<div class="col-md-12">
 		<div class="col-md-3 well">
 			<%-- Vérification de la présence d'un objet utilisateur en session --%>
 			<c:if test="${!empty sessionScope.sessionUtilisateur}">
