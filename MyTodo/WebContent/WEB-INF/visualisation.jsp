@@ -7,8 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style>
-<%@include file="lib/css/css/bootstrap.min.css" %>
+<%@ include file="lib/css/css/bootstrap.min.css" %>
 </style>
+<style>
+<%@ include file="lib/css/css/bootstrap-colorpalette.css" %>
+</style>
+
+<script type="text/javascript"><%@include file="lib/css/js/jquery.js" %></script>
+<script type="text/javascript"><%@include file="lib/css/js/bootstrap.min.js" %></script>
+<script type="text/javascript"><%@include file="lib/css/js/bootstrap-colorpalette.js" %></script>
 
 <title>MyTodo</title>
 </head>
@@ -46,6 +53,49 @@
 				<a href="synchronisation" class="btn btn-primary">Synchronisation
 					Google Calendar</a>
 			</div>
+			<br />
+			<!-- Create and Visualisation Context -->
+
+			<div class="btn-group">
+				<form role="form" method="post" action="visualisation">
+					<label for="contexte">Nouveau contexte :</label> <br />
+					<input type="text" class="form-control" id="contexte"
+						name="contexte" placeholder="contexte"  /> ${form.erreurs['contexte']}
+						<a
+						class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+						<button type="button" id="btnColor" class="btn-color" style="height: 15px;background: #FFFFFF"></button></a>
+					<ul class="dropdown-menu">
+						<li><div id="colorpalette1"></div></li>
+					</ul>
+					<input type="hidden" name="color" id="color" value="#FFFFFF"/>
+					<input type="submit" value="Créer" />
+				</form>
+				
+			</div>
+			
+			<script>
+				$('#colorpalette1').colorPalette().on('selectColor',
+						function(e) {
+							$('#selected-color1').val(e.color);
+							$('#btnColor').css("background", e.color);
+							$('#color').val(e.color);
+						});
+			</script>
+			
+			<!-- Pour chaque Contexte ... -->
+			<div class="btn-group">
+						<c:forEach items="${contexte}" var="myCont">
+							<button type="button" id="btnColor" class="btn-color" style="background: ${myCont.couleur}">
+							${myCont.nom}
+							</button>
+							
+						</c:forEach>
+						</div>
+			
+			
+
+
+			<!-- -------------------------------- -->
 		</div>
 		
 		<div class="col-md-8 col-md-offset-1 well">		
@@ -91,11 +141,12 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordion"
-										href="#${myTodo.idTodo}"> Titre : ${myTodo.titre} </a>
-									<a href="http://localhost:8080/MyTodo/suppression?deleteTodo=${myTodo.idTodo}">
-							<button	type="button" class="close">&times;</button></a>
-								</h4>
+										<a data-toggle="collapse" data-parent="#accordion"
+											href="#${myTodo.idTodo}"> Titre : ${myTodo.titre} </a> <a
+											href="http://localhost:8080/MyTodo/suppression?deleteTodo=${myTodo.idTodo}">
+											<button type="button" class="close">&times;</button>
+										</a>
+									</h4>
 								</div>
 								<div id="${myTodo.idTodo}" class="panel-collapse collapse">
 									<div class="panel-body">
@@ -103,10 +154,11 @@
 										${myTodo.description} <br /> Priorité :
 										${myTodo.degreImportance} <br /> Echéance :
 										${myTodo.echeance}
-										
+
 										<form method="post" action="modifyTodo">
-							<input name="IDTodo" type="hidden" value="${myTodo.idTodo}">
-							<input border=0 src="./img/pencil-icon.png" type="image" Value="submit" align="right">
+											<input name="IDTodo" type="hidden" value="${myTodo.idTodo}">
+											<input border=0 src="./img/pencil-icon.png" type="image"
+												Value="submit" align="right">
 										</form>
 									</div>
 								</div>
