@@ -73,4 +73,12 @@
     <servlet-name>Suppression</servlet-name>
     <url-pattern>/suppression</url-pattern>
   </servlet-mapping>
+  <servlet>
+	<servlet-name>modifyCompte</servlet-name>
+	<servlet-class>servlets.modifyCompte</servlet-class>
+</servlet>
+	<servlet-mapping>
+		<servlet-name>modifyCompte</servlet-name>
+		<url-pattern>/modifyCompte</url-pattern>
+	</servlet-mapping>
 </web-app>

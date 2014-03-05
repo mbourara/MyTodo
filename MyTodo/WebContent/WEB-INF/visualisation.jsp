@@ -23,7 +23,7 @@
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-right">
-
+				<a href="modifyCompte" class="btn btn-default navbar-btn" role="button">Modifier son compte</a>
 				<a href="deconnexion" class="btn btn-default navbar-btn"
 					role="button">Déconnexion</a>
 			</div>
