@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,6 +51,8 @@ public class VisuTodo {
 		switch(filtre){
 		case "Tous" : filtreTous(session, connectedUser); break;
 		case "Aujourd'hui" : filtreAdj(session, connectedUser); break;
+		case "Semaine" : filtreSemaine(session, connectedUser); break;
+		case "Mois" : filtreMois(session, connectedUser); break;
 		default : filtreTous(session, connectedUser); break;
 		}
 		
@@ -65,28 +68,60 @@ public class VisuTodo {
 		List<Todo> ListeTodo;
 		Date dateAdj=new Date();
 		
-		ListeTodo= (List<Todo>)session.createQuery("select u from Todo u").list();
+		ListeTodo= (List<Todo>)session.createQuery("select u from Todo u where u.fkIdUtilisateur = '"+ connectedUser + 
+				"' and u.echeance = '"+ dt.format(dateAdj) + "'").list();
 
 		for(Todo t : ListeTodo){
-			if(t.getFkIdUtilisateur()==connectedUser){
-				if(dt.format(t.getEcheance()).equals(dt.format(dateAdj))){
-					listTodo.add(t);
-					nbTodo=nbTodo+1;
-				}
-			}
+			listTodo.add(t);
+			nbTodo=nbTodo+1;
 		}
+		//adr save bug : if(dt.format(t.getEcheance()).equals(dt.format(dateAdj)))
 	}
 	
 	@SuppressWarnings("unchecked")
 	public void filtreTous(Session session, int connectedUser){
 		List<Todo> ListeTodo;
-		ListeTodo= (List<Todo>)session.createQuery("select u from Todo u").list();
 		
-		//Recherche des Todo de l'utilisateur connecté
+		ListeTodo= (List<Todo>)session.createQuery("select u from Todo u where u.fkIdUtilisateur = '"+ connectedUser + "'").list();		
+		
 		for(Todo t : ListeTodo){
-			if(t.getFkIdUtilisateur()==connectedUser){
+			listTodo.add(t);
+			nbTodo=nbTodo+1;				
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void filtreSemaine(Session session, int connectedUser){
+		List<Todo> ListeTodo;
+		Date dateAdj=new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(dateAdj);
+		cal.add(Calendar.DATE, 7);
+		
+		ListeTodo= (List<Todo>)session.createQuery("select u from Todo u where u.fkIdUtilisateur = '"+ connectedUser + "'").list();	
+
+		for(Todo t : ListeTodo){			
+			if(cal.getTime().after(t.getEcheance())){
 				listTodo.add(t);
-				nbTodo=nbTodo+1;				
+				nbTodo=nbTodo+1;
+			}			
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void filtreMois(Session session, int connectedUser){
+		List<Todo> ListeTodo;
+		Date dateAdj=new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(dateAdj);
+		cal.add(Calendar.MONTH, 1);
+
+		ListeTodo= (List<Todo>)session.createQuery("select u from Todo u where u.fkIdUtilisateur = '"+ connectedUser + "'").list();	
+
+		for(Todo t : ListeTodo){
+			if(cal.getTime().after(t.getEcheance())){
+				listTodo.add(t);
+				nbTodo=nbTodo+1;
 			}
 		}
 	}
@@ -108,11 +143,15 @@ public class VisuTodo {
 	}
 	
 	public ArrayList<Todo> appliquerTri(String tri, ArrayList<Todo> mesTodo, HttpServletRequest request){
+		@SuppressWarnings("unchecked")
 		Comparator<Todo> pc = new PriorityComparator();
+		@SuppressWarnings("unchecked")
+		Comparator<Todo> nc = new NameComparator();
 		
 		switch(tri){
 		case "Date de creation" : break;
 		case "Priorite" :  Collections.sort(mesTodo, pc); break;
+		case "Alphabetique" : Collections.sort(mesTodo, nc); break;
 		default :  break;
 		}
 		

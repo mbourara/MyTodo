@@ -55,14 +55,23 @@
 				<input name="typeFiltre" type="submit" Value="Tous">
 				<c:if test="${filtre eq 'Tous'}"></b></c:if> 
 				- <c:if test="${filtre eq adj}"><b></c:if>
-				<input name="typeFiltre" type="submit" Value="Aujourd'hui"><br />
+				<input name="typeFiltre" type="submit" Value="Aujourd'hui">
 				<c:if test="${filtre eq adj}"></b></c:if>
+				- <c:if test="${filtre eq 'Semaine'}"><b></c:if>
+				<input name="typeFiltre" type="submit" Value="Semaine">
+				<c:if test="${filtre eq 'Semaine'}"></b></c:if>
+				- <c:if test="${filtre eq 'Mois'}"><b></c:if>
+				<input name="typeFiltre" type="submit" Value="Mois"><br />
+				<c:if test="${filtre eq 'Mois'}"></b></c:if>
 				Trier vos TODO(s) : <c:if test="${tri eq 'Date de creation'}"><b></c:if>
 				<input name="typeTri" type="submit" Value="Date de creation">
 				<c:if test="${tri eq 'Date de creation'}"></b></c:if> 
 				- <c:if test="${tri eq 'Priorite'}"><b></c:if>
 				<input name="typeTri" type="submit" Value="Priorite">
 				<c:if test="${tri eq 'Priorite'}"></b></c:if>
+				- <c:if test="${tri eq 'Alphabetique'}"><b></c:if>
+				<input name="typeTri" type="submit" Value="Alphabetique">
+				<c:if test="${tri eq 'Alphabetique'}"></b></c:if>
 			</form>
 		</div>
 		
