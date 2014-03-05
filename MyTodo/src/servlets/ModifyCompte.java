@@ -13,7 +13,7 @@ import jdbc.Utilisateurs;
 import model.ModifyCompteForm;
 
 @WebServlet("/ModifyCompte")
-public class modifyCompte extends HttpServlet {
+public class ModifyCompte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String ATT_USER = "utilisateur";
 	public static final String ATT_FORM = "form";
