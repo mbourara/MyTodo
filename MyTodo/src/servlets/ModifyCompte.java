@@ -31,13 +31,7 @@ public class ModifyCompte extends HttpServlet {
 		HttpSession session = request.getSession();
 		ModifyCompteForm form = new ModifyCompteForm();
 
-		Utilisateurs u = null;
-		try {
-			u = form.ModifyUtilisateur(request);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Utilisateurs u = form.ModifyUtilisateur(request);
 
 		if(form.getValidate()){
 			session.setAttribute( ATT_SESSION_USER, u );

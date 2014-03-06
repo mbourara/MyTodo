@@ -81,6 +81,7 @@
 								
 					<div class="col-md-12">
 						<div class="pull-right">
+						<a href="visualisation" class="btn btn-default" role="button">Annuler</a>
 							<button type="submit" class="btn btn-primary">Création</button>
 						</div>
 					</div>

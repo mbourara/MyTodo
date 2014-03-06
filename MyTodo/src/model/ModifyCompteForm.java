@@ -30,79 +30,76 @@ public final class ModifyCompteForm {
 	private int selected	= 0;
 	private boolean validate = false;
 
-	public Utilisateurs ModifyUtilisateur(HttpServletRequest request) throws Exception {
+	
+public Utilisateurs ModifyUtilisateur(HttpServletRequest request) {
 
-		Utilisateurs utilisateur = new Utilisateurs();	
-		
-		String email = getValeurChamp(request, CHAMP_EMAIL);
-		String gmail = getValeurChamp(request, CHAMP_GMAIL);
-		String motDePasse = getValeurChamp(request, CHAMP_PASS);
-		String confirmation = getValeurChamp(request, CHAMP_CONF);
-		String nom = getValeurChamp(request, CHAMP_NOM);
-		String prenom = getValeurChamp(request, CHAMP_PRENOM);
-		String login = getValeurChamp(request, CHAMP_LOGIN);
-		//Recuperation de l'id de l'utilisateur connecté
-		int connectedUser;
-		HttpSession sessionUser = request.getSession();
-		Utilisateurs us = (Utilisateurs) sessionUser.getAttribute("sessionUtilisateur");
-		connectedUser = us.getIdUtilisateur();
-		
-		utilisateur.setIdUtilisateur(connectedUser);		
-		try {
-			validationEmail(email);
-		} catch (Exception e) {
-			setErreur(CHAMP_EMAIL, e.getMessage());
-		}
-		utilisateur.setMail(email);
-		try {
-			//validationEmail(gmail);
-		} catch (Exception e) {
-			setErreur(CHAMP_GMAIL, e.getMessage());
-		}
-		utilisateur.setGmail(gmail);
-		try {
-			validationMotsDePasse(motDePasse, confirmation);
-		} catch (Exception e) {
-			setErreur(CHAMP_PASS, e.getMessage());
-			setErreur(CHAMP_CONF, null);
-		}
-if (motDePasse.length() < 3) {
-	throw new Exception(
-			"Les mots de passe doivent contenir au moins 3 caractères.");
-}
-else
-		utilisateur.setMotDePasse(MD5Util.cryptageMD5(motDePasse));
-		
-		try {
-			validationlogin(login);
-		} catch (Exception e) {
-			setErreur(CHAMP_LOGIN, e.getMessage());
-		}
-		utilisateur.setLogin(login);
-		try {
-			validationNom(nom);
-		} catch (Exception e) {
-			setErreur(CHAMP_NOM, e.getMessage());
-		}
-		utilisateur.setNom(nom);
-		try {
-			validationPrenom(prenom);
-		} catch (Exception e) {
-			setErreur(CHAMP_PRENOM, e.getMessage());
-		}
-		utilisateur.setPrenom(prenom);
+	Utilisateurs utilisateur = new Utilisateurs();	
 
-		if (erreurs.isEmpty()) {
-			validate = true;
-			try {
-				update(utilisateur);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} 
-		return utilisateur;
+	String email = getValeurChamp(request, CHAMP_EMAIL);
+	String gmail = getValeurChamp(request, CHAMP_GMAIL);
+	String motDePasse = getValeurChamp(request, CHAMP_PASS);
+	String confirmation = getValeurChamp(request, CHAMP_CONF);
+	String nom = getValeurChamp(request, CHAMP_NOM);
+	String prenom = getValeurChamp(request, CHAMP_PRENOM);
+	String login = getValeurChamp(request, CHAMP_LOGIN);
+
+	//Recuperation de l'id de l'utilisateur connecté
+	int connectedUser;
+	HttpSession sessionUser = request.getSession();
+	Utilisateurs us = (Utilisateurs) sessionUser.getAttribute("sessionUtilisateur");
+	connectedUser = us.getIdUtilisateur();
+
+	utilisateur.setIdUtilisateur(connectedUser);		
+	try {
+		validationEmail(email);
+	} catch (Exception e) {
+		setErreur(CHAMP_EMAIL, e.getMessage());
 	}
+	utilisateur.setMail(email);
+	try {
+		//validationEmail(gmail);
+	} catch (Exception e) {
+		setErreur(CHAMP_GMAIL, e.getMessage());
+	}
+	utilisateur.setGmail(gmail+EXTEND_GMAIL);
+	try {
+		validationMotsDePasse(motDePasse, confirmation);
+	} catch (Exception e) {
+		setErreur(CHAMP_PASS, e.getMessage());
+		setErreur(CHAMP_CONF, null);
+	}
+	if (motDePasse != null) {
+		utilisateur.setMotDePasse(MD5Util.cryptageMD5(motDePasse));
+	}
+	try {
+		validationlogin(login);
+	} catch (Exception e) {
+		setErreur(CHAMP_LOGIN, e.getMessage());
+	}
+	utilisateur.setLogin(login);
+	try {
+		validationNom(nom);
+	} catch (Exception e) {
+		setErreur(CHAMP_NOM, e.getMessage());
+	}
+	utilisateur.setNom(nom);
+	try {
+		validationPrenom(prenom);
+	} catch (Exception e) {
+		setErreur(CHAMP_PRENOM, e.getMessage());
+	}
+	utilisateur.setPrenom(prenom);
 
+	if (erreurs.isEmpty()) {
+		validate = true;
+		try {
+			update(utilisateur);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	} 
+	return utilisateur;
+}
 	private void validationEmail(String email) throws Exception {
 		if (email != null) {
 			if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {

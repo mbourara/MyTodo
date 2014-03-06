@@ -65,7 +65,9 @@
 					<div class="${form.erreurs['gmail'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['gmail']}</div>
 
 					<div class="pull-right">
+					<a href="visualisation" class="btn btn-default" role="button">Annuler</a>
 						<button type="submit" value="modifyCompte" class="btn btn-primary">OK</button>
+						
 					</div>
 				</form>		
 			</div>
