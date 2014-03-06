@@ -68,7 +68,9 @@ public class ModifyTodoForm {
 			validate = false;
 			setErreur( CHAMP_CONTEXT, e.getMessage() );
 		}
+		//Bug ici si le contexte est vide
 		todo.setContexte(Integer.parseInt(context));
+		// fin bug
 		setContains(CHAMP_CONTEXT, context);
 		try {
 			validationEcheance(echeance);

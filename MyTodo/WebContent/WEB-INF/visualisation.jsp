@@ -91,10 +91,6 @@
 							
 						</c:forEach>
 						</div>
-			
-			
-
-
 			<!-- -------------------------------- -->
 		</div>
 		
@@ -141,9 +137,8 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion"
-											href="#${myTodo.idTodo}"> Titre : ${myTodo.titre} </a> <a
-											href="http://localhost:8080/MyTodo/suppression?deleteTodo=${myTodo.idTodo}">
+										<a data-toggle="collapse" data-parent="#accordion" href="#${myTodo.idTodo}"> Titre : ${myTodo.titre} </a> 
+											<a href="http://localhost:8080/MyTodo/suppression?deleteTodo=${myTodo.idTodo}">
 											<button type="button" class="close">&times;</button>
 										</a>
 									</h4>
@@ -178,7 +173,4 @@
 	</c:if>
 
 </body>
-<script type="text/javascript"><%@include file="lib/css/js/jquery.js" %></script>
-<script type="text/javascript"><%@include file="lib/css/js/bootstrap.min.js" %></script>
-<script type="text/javascript"><%@include file="lib/css/js/bootstrap.js" %></script>
 </html>
