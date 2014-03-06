@@ -13,6 +13,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.util.HibernateUtil;
+import com.util.MD5Util;
 
 public final class ModifyCompteForm {
 	private static final String CHAMP_EMAIL = "email";
@@ -29,7 +30,7 @@ public final class ModifyCompteForm {
 	private int selected	= 0;
 	private boolean validate = false;
 
-	public Utilisateurs ModifyUtilisateur(HttpServletRequest request) {
+	public Utilisateurs ModifyUtilisateur(HttpServletRequest request) throws Exception {
 
 		Utilisateurs utilisateur = new Utilisateurs();	
 		
@@ -40,7 +41,6 @@ public final class ModifyCompteForm {
 		String nom = getValeurChamp(request, CHAMP_NOM);
 		String prenom = getValeurChamp(request, CHAMP_PRENOM);
 		String login = getValeurChamp(request, CHAMP_LOGIN);
-				
 		//Recuperation de l'id de l'utilisateur connecté
 		int connectedUser;
 		HttpSession sessionUser = request.getSession();
@@ -59,14 +59,20 @@ public final class ModifyCompteForm {
 		} catch (Exception e) {
 			setErreur(CHAMP_GMAIL, e.getMessage());
 		}
-		utilisateur.setGmail(gmail+EXTEND_GMAIL);
+		utilisateur.setGmail(gmail);
 		try {
 			validationMotsDePasse(motDePasse, confirmation);
 		} catch (Exception e) {
 			setErreur(CHAMP_PASS, e.getMessage());
 			setErreur(CHAMP_CONF, null);
 		}
-		utilisateur.setMotDePasse(motDePasse);
+if (motDePasse.length() < 3) {
+	throw new Exception(
+			"Les mots de passe doivent contenir au moins 3 caractères.");
+}
+else
+		utilisateur.setMotDePasse(MD5Util.cryptageMD5(motDePasse));
+		
 		try {
 			validationlogin(login);
 		} catch (Exception e) {
@@ -172,7 +178,6 @@ public final class ModifyCompteForm {
 					"Le prénom de l'utilisateur doit être rempli.");
 	}
 	
-	// inscription 2 fois = bug
 	// Modification dans la base de donnée
 	private void update(Utilisateurs u)
 	{

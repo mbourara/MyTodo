@@ -46,12 +46,12 @@
 					<div class="${form.erreurs['login'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['login']}</div>
 
 					<div class="form-group ${form.erreurs['motdepasse'] != null ? ' has-error' : ''} ">
-						<label for="motdepasse">Mot de passe</label> <input type="password" class="form-control" id="motdepasse" name="motdepasse" maxlength="20" value = "${sessionScope.sessionUtilisateur.motDePasse}" />
+						<label for="motdepasse">Mot de passe</label> <input type="password" class="form-control" id="motdepasse" name="motdepasse" maxlength="20" />
 					</div>
 					<div class="${form.erreurs['motdepasse'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['motdepasse']}</div>
 
 					<div class="form-group ${form.erreurs['confirmation'] != null ? ' has-error' : ''} ">
-						<label for="confirmation">Confirmation du mot de passe</label> <input type="password" class="form-control" id="confirmation" name="confirmation" maxlength="20" value = "${sessionScope.sessionUtilisateur.motDePasse}" />
+						<label for="confirmation">Confirmation du mot de passe</label> <input type="password" class="form-control" id="confirmation" name="confirmation" maxlength="20" />
 					</div>
 					<div class="${form.erreurs['confirmation'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['confirmation']}</div>
 
@@ -59,7 +59,7 @@
 						<label for="gmail">Adresse Gmail</label>
 						<div class="input-group">
 							<input type="text" class="form-control" id="gemail" name="gmail" maxlength="60" value = "${sessionScope.sessionUtilisateur.gmail}" />
-						<span class="input-group-addon">@gmail.com</span>
+						<!--<span class="input-group-addon">@gmail.com</span>-->
 						</div>
 					</div>
 					<div class="${form.erreurs['gmail'] != null ? ' alert alert-danger' : ''} col-md-12">${form.erreurs['gmail']}</div>
