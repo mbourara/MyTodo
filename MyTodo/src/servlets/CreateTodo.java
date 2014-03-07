@@ -22,7 +22,7 @@ import model.CreateTodoForm;
 public class CreateTodo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public static final String VUE = "/WEB-INF/createTodo.jsp";
+	public static final String VUE = "/WEB-INF/visualisation.jsp";
 	public static final String VUE_VISU = "http://localhost:8080/MyTodo/visualisation";
 	public static final String ATT_SESSION_USER = "sessionUtilisateur";
 	public static final String ATT_FORM = "form";

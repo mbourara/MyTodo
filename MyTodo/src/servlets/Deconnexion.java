@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Deconnexion")
 public class Deconnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String URL_REDIRECTION = "http://localhost:8080/MyTodo/connexion";
+	public static final String URL_REDIRECTION = "http://localhost:8080/MyTodo/index";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Récupération et destruction de la session en cours */
