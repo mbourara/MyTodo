@@ -34,18 +34,18 @@ public class Visualisation extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-        /*if ( session.getAttribute( ATT_SESSION_USER ) == null ) {
-            /* Redirection vers la page de connexion 
+        if ( session.getAttribute( ATT_SESSION_USER ) == null ) {
+            /* Redirection vers la page de connexion */
             response.sendRedirect( VUE_CONNEXION );
-        } else {*/
-    		//VisuTodo visuTodo = new VisuTodo();
-    		//ArrayList<Todo> mesTodo = visuTodo.chargementTodo(request);
+        } else {
+    		VisuTodo visuTodo = new VisuTodo();
+    		ArrayList<Todo> mesTodo = visuTodo.chargementTodo(request);
 
-    		//request.setAttribute( ATT_VISU, visuTodo );
-    		//request.setAttribute( ATT_TODO, mesTodo );
+    		request.setAttribute( ATT_VISU, visuTodo );
+    		request.setAttribute( ATT_TODO, mesTodo );
     		
         	this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-       // }
+        }
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

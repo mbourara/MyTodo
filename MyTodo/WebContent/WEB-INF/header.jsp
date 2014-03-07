@@ -12,7 +12,7 @@
 	
 	      <ul class="nav navbar-nav navbar-right">
 	       	 <li>
-				<a href="Deconnexion" class="btn btn-default" role="button">Déconnection</a>
+				<a href="index" class="btn btn-default" role="button">Déconnection</a>
 	       	</li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->

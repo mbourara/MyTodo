@@ -56,7 +56,6 @@
 				<div class="tab-pane ${form.contains['type'] == 'null' ? ' active' : ''}" id="visualisation"><%@ include file="visuTodoForm.jsp" %></div>
 				<div class="tab-pane ${form.contains['type'] == 'createTodo' ? ' active' : ''}" id="creertodo"><%@ include file="createTodo.jsp" %></div>
 				<div class="tab-pane ${form.contains['type'] == 'createTag' ? ' active' : ''}" id="creertag"><%@ include file="createTag.jsp" %></div>
-				<div class="tab-pane ${form.contains['type'] == 'synchro' ? ' active' : ''}" id="synchro"><%@ include file="synchronisation.jsp" %></div>
 			</div>	
 		</div>
 	</div>
